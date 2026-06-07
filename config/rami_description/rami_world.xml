@@ -31,40 +31,43 @@
   </asset>
 
   <worldbody>
-    <light pos="0 0 3" dir="0 0 -1" directional="true" /><geom name="floor" type="plane" size="5 5 0.05" rgba="0.8 0.9 0.8 1" /><body name="base_link">
+    <light pos="0 0 3" dir="0 0 -1" directional="true" /><geom name="floor" type="plane" size="5 5 0.05" rgba="0.8 0.9 0.8 1" />
+    <body name="base_link" pos="0 0 -0.015">
       <inertial pos="0 0 0.264356" mass="109.995" diaginertia="12.2755 12.1424 1.27632" />
-      <joint name="world_to_base" type="free" />
-      <geom type="mesh" mesh="base_link" />
-      <geom type="mesh" mesh="pillar_link_1" />
-      <geom type="mesh" mesh="depth_camera_1" />
-      <geom type="mesh" mesh="ultrasonic_sensor_1_1" />
-      <geom type="mesh" mesh="ultrasonic_sensor_2_1" />
-      <geom type="mesh" mesh="ultrasonic_sensor_3_1" />
-      <geom type="mesh" mesh="ultrasonic_sensor_4_1" />
-      <geom type="mesh" mesh="ultrasonic_sensor_5_1" />
-      <geom type="mesh" mesh="ultrasonic_sensor_6_1" />
-      <geom type="mesh" mesh="ultrasonic_sensor_7_1" />
-      <geom type="mesh" mesh="ultrasonic_sensor_8_1" />
-      <geom type="mesh" mesh="imu_sensor_1" />
+      <joint name="root_x" type="slide" axis="1 0 0" damping="2" frictionloss="0.5" />
+      <joint name="root_y" type="slide" axis="0 1 0" damping="2" frictionloss="0.5" />
+      <joint name="root_z_rot" type="hinge" axis="0 0 1" damping="2" frictionloss="0.5" />
+      <geom type="mesh" mesh="base_link" contype="0" conaffinity="0" />
+      <geom type="mesh" mesh="pillar_link_1" contype="0" conaffinity="0" />
+      <geom type="mesh" mesh="depth_camera_1" contype="0" conaffinity="0" />
+      <geom type="mesh" mesh="ultrasonic_sensor_1_1" contype="0" conaffinity="0" />
+      <geom type="mesh" mesh="ultrasonic_sensor_2_1" contype="0" conaffinity="0" />
+      <geom type="mesh" mesh="ultrasonic_sensor_3_1" contype="0" conaffinity="0" />
+      <geom type="mesh" mesh="ultrasonic_sensor_4_1" contype="0" conaffinity="0" />
+      <geom type="mesh" mesh="ultrasonic_sensor_5_1" contype="0" conaffinity="0" />
+      <geom type="mesh" mesh="ultrasonic_sensor_6_1" contype="0" conaffinity="0" />
+      <geom type="mesh" mesh="ultrasonic_sensor_7_1" contype="0" conaffinity="0" />
+      <geom type="mesh" mesh="ultrasonic_sensor_8_1" contype="0" conaffinity="0" />
+      <geom type="mesh" mesh="imu_sensor_1" contype="0" conaffinity="0" />
       <body name="weel_left_front_1" pos="0.15 -0.1 0.065">
         <inertial pos="-0.0404219 0 0" mass="4.43493" diaginertia="0.006057 0.005355 0.005355" />
-        <joint name="weel_LF_joint" pos="0 0 0" axis="1 0 0" />
-        <geom pos="-0.15 0.1 -0.065" type="mesh" mesh="weel_left_front_1" />
+        <joint name="weel_LF_joint" pos="0 0 0" axis="1 0 0" damping="0.1" frictionloss="0.01" />
+        <geom pos="-0.15 0.1 -0.065" type="mesh" mesh="weel_left_front_1" contype="0" conaffinity="0" />
       </body>
       <body name="weel_left_back_1" pos="0.15 0.1 0.065">
         <inertial pos="-0.0404219 0 0" mass="4.43493" diaginertia="0.006057 0.005355 0.005355" />
-        <joint name="weel_LB_joint" pos="0 0 0" axis="1 0 0" />
-        <geom pos="-0.15 -0.1 -0.065" type="mesh" mesh="weel_left_back_1" />
+        <joint name="weel_LB_joint" pos="0 0 0" axis="1 0 0" damping="0.1" frictionloss="0.01" />
+        <geom pos="-0.15 -0.1 -0.065" type="mesh" mesh="weel_left_back_1" contype="0" conaffinity="0" />
       </body>
       <body name="weel_right_front_1" pos="-0.15 -0.1 0.065">
         <inertial pos="0.0404219 0 0" mass="4.43493" diaginertia="0.006057 0.005355 0.005355" />
-        <joint name="weel_RF_joint" pos="0 0 0" axis="-1 0 0" />
-        <geom pos="0.15 0.1 -0.065" type="mesh" mesh="weel_right_front_1" />
+        <joint name="weel_RF_joint" pos="0 0 0" axis="-1 0 0" damping="0.1" frictionloss="0.01" />
+        <geom pos="0.15 0.1 -0.065" type="mesh" mesh="weel_right_front_1" contype="0" conaffinity="0" />
       </body>
       <body name="weel_right_back_1" pos="-0.15 0.1 0.065">
         <inertial pos="0.0404219 0 0" mass="4.43493" diaginertia="0.006057 0.005355 0.005355" />
-        <joint name="weel_RB_joint" pos="0 0 0" axis="-1 0 0" />
-        <geom pos="0.15 -0.1 -0.065" type="mesh" mesh="weel_right_back_1" />
+        <joint name="weel_RB_joint" pos="0 0 0" axis="-1 0 0" damping="0.1" frictionloss="0.01" />
+        <geom pos="0.15 -0.1 -0.065" type="mesh" mesh="weel_right_back_1" contype="0" conaffinity="0" />
       </body>
       <body name="lift_slide_link_1" pos="0 -0.02 0.865">
         <inertial pos="0 0.02 0" quat="0.5 0.5 -0.5 0.5" mass="1.6139" diaginertia="0.001693 0.001331 0.001331" />
@@ -109,4 +112,15 @@
       </body>
     </body>
   </worldbody>
+
+  <actuator>
+    <velocity name="base_vx" joint="root_x" kv="200" ctrlrange="-5 5" />
+    <velocity name="base_vy" joint="root_y" kv="200" ctrlrange="-5 5" />
+    <velocity name="base_wz" joint="root_z_rot" kv="100" ctrlrange="-5 5" />
+    
+    <velocity name="weel_lf" joint="weel_LF_joint" kv="2" ctrlrange="-50 50" />
+    <velocity name="weel_lb" joint="weel_LB_joint" kv="2" ctrlrange="-50 50" />
+    <velocity name="weel_rf" joint="weel_RF_joint" kv="2" ctrlrange="-50 50" />
+    <velocity name="weel_rb" joint="weel_RB_joint" kv="2" ctrlrange="-50 50" />
+  </actuator>
 </mujoco>
