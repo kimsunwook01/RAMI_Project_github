@@ -56,6 +56,7 @@ src/
 ```text
 RAMI_project/                    # 리포지토리 루트
 ├── 0_Document/                  # 프로젝트 관련 문서 디렉토리
+│   └── assets/                  # 프로젝트 README 및 보고서용 캡처 이미지 보관 리소스 폴더
 ├── .antigravity/                # 안티그래비티 IDE 로컬 프로젝트 설정 및 대화 세션 기록
 ├── config/                      # 로봇 가상 환경 및 하드웨어 모델 설정 디렉토리
 │   ├── user_config.json         # 사용자 정의 가상 데이터셋 (QR ID, 방 위치, 전등 매핑 등)
@@ -73,6 +74,7 @@ RAMI_project/                    # 리포지토리 루트
 │   └── test_door_learning.py    # Phase 5: 문 및 문고리 연동 조작 학습 테스트
 │
 ├── README.md                    # 프로젝트 가이드 문서
+├── convert_urdf.py              # URDF에서 MJCF로 자동 변환 및 MuJoCo 호환 최적화 스크립트
 ├── requirements.txt             # Python 패키지 의존성 목록 (pip)
 ├── environment.yml              # Conda 가상환경 패키지 목록
 └── .env                         # 프로젝트 ID 환경 변수

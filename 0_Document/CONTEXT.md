@@ -50,9 +50,10 @@ AI는 아키텍처 구조나 도메인 지식의 세부 맥락이 필요할 시 
 
 ### ⏳ 진행 중인 작업 (In Progress)
 - `[/]` **Phase 1:** 원기둥 바퀴 기반 모바일 베이스 구축 및 x, y, wz 가상 slide/hinge 관절 제어 초안 작성 (`config/rami_description/rami_world.xml`)
-  * _현재 세부 태스크: 개발자가 직접 검토할 수 있도록 가장 단순화된 형태의 동체 뼈대 MJCF 구조 설계 중 (URDF to MJCF 변환 파이프라인 개발)_
+  * _현재 세부 태스크: URDF to MJCF 뼈대 자동 변환 및 뷰어 환경(바닥, 광원) 세팅 완료. 이어서 휠/모바일 베이스 액추에이터 제어 설정 진행 예정._
 
 ### ✅ 완료된 작업 (Done)
 - `[x]` **Phase 0:** 구글 클라우드 플랫폼(GCP) 무료 체험판 계정 생성 및 Google Cloud CLI 시스템 전역 연동 완벽 완료 (2026-06-07)
 - `[x]` **Phase 0:** 안티그래비티 IDE 데이터 클라우드 확장 기능 및 ADC 자격 증명 동기화 트러블슈팅 완료 (2026-06-07)
 - `[x]` **Phase 0:** ROBO-Path 사상을 이식한 클린 아키텍처 기반 `RAMI_Software_Architecture.md` 설계서 작성 완료 (2026-06-07)
+- `[x]` **Phase 1 (Part 1):** 순수 Python 기반 URDF to MJCF 파서 스크립트(`convert_urdf.py`) 제작 및 MuJoCo 3.9.0 뷰어 렌더링 검증 완료 (2026-06-07)
