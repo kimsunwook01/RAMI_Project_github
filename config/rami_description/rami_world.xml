@@ -71,7 +71,7 @@
       </body>
       <body name="lift_slide_link_1" pos="0 -0.02 0.865">
         <inertial pos="0 0.02 0" quat="0.5 0.5 -0.5 0.5" mass="1.6139" diaginertia="0.001693 0.001331 0.001331" />
-        <joint name="lift_slide_joint" pos="0 0 0" axis="0 0 1" type="slide" range="-0.62 0.62" actuatorfrcrange="-100 100" />
+        <joint name="lift_slide_joint" pos="0 0 0" axis="0 0 1" type="slide" range="-0.62 0.62" actuatorfrcrange="-100 100" damping="10000" frictionloss="10000" />
         <geom pos="0 0.02 -0.865" quat="1 0 0 0" type="mesh" mesh="lift_slide_link_1" />
         <body name="rotation_link_1" pos="0 0.02 0.03">
           <inertial pos="0 -0.0110341 -0.03" quat="0.5 0.5 -0.5 0.5" mass="4.89403" diaginertia="0.017752 0.012634 0.008358" />
