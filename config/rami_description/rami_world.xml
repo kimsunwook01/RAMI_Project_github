@@ -37,8 +37,8 @@
       <joint name="root_x" type="slide" axis="1 0 0" damping="2" frictionloss="0.5" />
       <joint name="root_y" type="slide" axis="0 1 0" damping="2" frictionloss="0.5" />
       <joint name="root_z_rot" type="hinge" axis="0 0 1" damping="2" frictionloss="0.5" />
-      <geom type="mesh" mesh="base_link" />
-      <geom type="mesh" mesh="pillar_link_1" />
+      <geom type="mesh" mesh="base_link" contype="1" conaffinity="1" />
+      <geom type="mesh" mesh="pillar_link_1" contype="2" conaffinity="2" />
       <geom type="mesh" mesh="depth_camera_1" contype="0" conaffinity="0" />
       <geom type="mesh" mesh="ultrasonic_sensor_1_1" contype="0" conaffinity="0" />
       <geom type="mesh" mesh="ultrasonic_sensor_2_1" contype="0" conaffinity="0" />
@@ -71,7 +71,7 @@
       </body>
       <body name="lift_slide_link_1" pos="0 -0.02 0.865">
         <inertial pos="0 0.02 0" quat="0.5 0.5 -0.5 0.5" mass="1.6139" diaginertia="0.001693 0.001331 0.001331" />
-        <joint name="lift_slide_joint" pos="0 0 0" axis="0 0 1" type="slide" range="-0.62 0.62" actuatorfrcrange="-1000 1000" damping="100" frictionloss="20" />
+        <joint name="lift_slide_joint" pos="0 0 0" axis="0 0 1" type="slide" range="-0.62 0.62" actuatorfrcrange="-10000 10000" damping="2000" frictionloss="20" />
         <geom pos="0 0.02 -0.865" quat="1 0 0 0" type="mesh" mesh="lift_slide_link_1" />
         <body name="rotation_link_1" pos="0 0.02 0.03">
           <inertial pos="0 -0.0110341 -0.03" quat="0.5 0.5 -0.5 0.5" mass="4.89403" diaginertia="0.017752 0.012634 0.008358" />
@@ -84,24 +84,24 @@
             <body name="arm_link_2_1" pos="-0.03 -0.06 -0.03">
               <inertial pos="0.03 -0.110769 0" quat="0.5 0.5 -0.5 0.5" mass="5.47006" diaginertia="0.022162 0.022112 0.003232" />
               <joint name="arm_joint_2" pos="0 0 0" axis="-1 0 0" range="-1.5708 1.5708" actuatorfrcrange="-100 100" damping="50" frictionloss="10" />
-              <geom pos="0.03 0.16 -0.865" quat="1 0 0 0" type="mesh" mesh="arm_link_2_1" />
+              <geom pos="0.03 0.16 -0.865" quat="1 0 0 0" type="mesh" mesh="arm_link_2_1" contype="3" conaffinity="3" />
               <body name="arm_link_3_1" pos="0 -0.2 0">
                 <inertial pos="0.03 -0.110769 0" quat="0.5 0.5 -0.5 0.5" mass="5.47006" diaginertia="0.022162 0.022112 0.003232" />
                 <joint name="arm_joint_3" pos="0 0 0" axis="-1 0 0" range="-1.5708 1.5708" actuatorfrcrange="-100 100" damping="50" frictionloss="10" />
-                <geom pos="0.03 0.36 -0.865" quat="1 0 0 0" type="mesh" mesh="arm_link_3_1" />
+                <geom pos="0.03 0.36 -0.865" quat="1 0 0 0" type="mesh" mesh="arm_link_3_1" contype="3" conaffinity="3" />
                 <body name="arm_link_4_1" pos="0 -0.2 0">
                   <inertial pos="0.03 -0.0162805 0" quat="0 0.707107 0 0.707107" mass="0.762492" diaginertia="0.000704 0.000593 0.000549" />
                   <joint name="arm_joint_4" pos="0 0 0" axis="-1 0 0" range="-1.5708 1.5708" actuatorfrcrange="-100 100" damping="50" frictionloss="10" />
-                  <geom pos="0.03 0.56 -0.865" quat="1 0 0 0" type="mesh" mesh="arm_link_4_1" />
+                  <geom pos="0.03 0.56 -0.865" quat="1 0 0 0" type="mesh" mesh="arm_link_4_1" contype="3" conaffinity="3" />
                   <body name="arm_link_5_1" pos="0.03 -0.04 0">
                     <inertial pos="0.000593162 -0.0243798 0.0140847" quat="0.422271 0.905813 0.00466835 -0.0341912" mass="1.24729" diaginertia="0.00130091 0.00103352 0.000791539" />
                     <joint name="arm_joint_5" pos="0 0 0" axis="0 1 0" range="-3.14159 3.14159" actuatorfrcrange="-100 100" damping="50" frictionloss="10" />
-                    <geom pos="0 0.6 -0.865" type="mesh" mesh="arm_link_5_1" />
+                    <geom pos="0 0.6 -0.865" type="mesh" mesh="arm_link_5_1" contype="3" conaffinity="3" />
                     <geom pos="0 0.6 -0.865" quat="1 0 0 0" type="mesh" mesh="gripper_camera_1" />
                     <body name="arm_link_6_1" pos="-0.005 -0.03 -0.015">
                       <inertial pos="0.005 -0.0180282 0.00316455" quat="0.534551 0.462877 -0.462877 0.534551" mass="0.44765" diaginertia="0.0002929 0.000233 0.0001021" />
                       <joint name="arm_joint_6" pos="0 0 0" axis="1 0 0" range="0 1.5708" actuatorfrcrange="-100 100" damping="50" frictionloss="10" />
-                      <geom pos="0.005 0.63 -0.85" quat="1 0 0 0" type="mesh" mesh="arm_link_6_1" />
+                      <geom pos="0.005 0.63 -0.85" quat="1 0 0 0" type="mesh" mesh="arm_link_6_1" contype="3" conaffinity="3" />
                     </body>
                   </body>
                 </body>
@@ -124,7 +124,7 @@
     <velocity name="weel_rb" joint="weel_RB_joint" kv="2" ctrlrange="-50 50" />
 
     <!-- 리프트 및 암 조인트 Position Actuator -->
-    <position name="act_lift" joint="lift_slide_joint" kp="50000" forcerange="-1000 1000" ctrlrange="-0.62 0.62" />
+    <position name="act_lift" joint="lift_slide_joint" kp="50000" forcerange="-10000 10000" ctrlrange="-0.62 0.62" />
     <position name="act_rot" joint="rotation_joint" kp="1000" ctrlrange="-3.14159 3.14159" />
     <position name="act_arm1" joint="arm_joint_1" kp="1000" ctrlrange="-1.5708 1.5708" />
     <position name="act_arm2" joint="arm_joint_2" kp="1000" ctrlrange="-1.5708 1.5708" />
@@ -133,4 +133,5 @@
     <position name="act_arm5" joint="arm_joint_5" kp="500" ctrlrange="-3.14159 3.14159" />
     <position name="act_arm6" joint="arm_joint_6" kp="500" ctrlrange="0 1.5708" />
   </actuator>
+
 </mujoco>
