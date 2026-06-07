@@ -28,3 +28,13 @@ class RobotHardwareIO(Protocol):
             w_rb (float): 우측 후륜 각속도 (rad/s)
         """
         pass
+        
+    def control_arm_joints(self, target_positions: List[float]) -> None:
+        """
+        리프트를 포함한 로봇암 7개 조인트의 목표 위치/각도를 제어합니다.
+        
+        Args:
+            target_positions (List[float]): [리프트(m), 회전관절(rad), 암1(rad), 암2(rad), 암3(rad), 암4(rad), 암5(rad), 암6(rad)]
+                단, 리프트 포함 총 8개의 액추에이터가 존재함.
+        """
+        pass

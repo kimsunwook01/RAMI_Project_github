@@ -15,6 +15,18 @@ class RamiMujocoAdapter(RobotHardwareIO):
         self.w_lb_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_ACTUATOR, "weel_lb")
         self.w_rf_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_ACTUATOR, "weel_rf")
         self.w_rb_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_ACTUATOR, "weel_rb")
+        
+        # Arm & Lift Actuators
+        self.arm_actuator_ids = [
+            mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_ACTUATOR, "act_lift"),
+            mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_ACTUATOR, "act_rot"),
+            mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_ACTUATOR, "act_arm1"),
+            mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_ACTUATOR, "act_arm2"),
+            mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_ACTUATOR, "act_arm3"),
+            mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_ACTUATOR, "act_arm4"),
+            mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_ACTUATOR, "act_arm5"),
+            mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_ACTUATOR, "act_arm6")
+        ]
 
     def move_base(self, vx: float, vy: float, wz: float) -> None:
         """
@@ -40,3 +52,15 @@ class RamiMujocoAdapter(RobotHardwareIO):
         if self.w_lb_id != -1: self.data.ctrl[self.w_lb_id] = w_lb
         if self.w_rf_id != -1: self.data.ctrl[self.w_rf_id] = -w_rf
         if self.w_rb_id != -1: self.data.ctrl[self.w_rb_id] = -w_rb
+
+    def control_arm_joints(self, target_positions: list[float]) -> None:
+        """
+        리프트 및 7개 암 조인트(총 8개)의 Position Actuator 제어.
+        target_positions 배열 길이는 반드시 8이어야 함.
+        """
+        if len(target_positions) != len(self.arm_actuator_ids):
+            return
+            
+        for idx, act_id in enumerate(self.arm_actuator_ids):
+            if act_id != -1:
+                self.data.ctrl[act_id] = target_positions[idx]
