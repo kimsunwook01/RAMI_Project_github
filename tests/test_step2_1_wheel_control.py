@@ -24,7 +24,7 @@ def terminal_input_thread():
     
     while True:
         try:
-            val = input()
+            val = input("명령> ")
             parts = val.strip().split()
             if len(parts) == 2:
                 target = parts[0].upper()
@@ -37,8 +37,15 @@ def terminal_input_thread():
                 elif target == 'ALL': cmd_wheels = [speed, speed, speed, speed]
                 else:
                     print("알 수 없는 바퀴 이름입니다. (LF, LB, RF, RB, ALL 중 택일)")
+                    continue
+                
+                print(f"✅ [{target}] 바퀴의 목표 속도를 {speed} rad/s로 설정했습니다.")
+            else:
+                print("입력 형식이 잘못되었습니다. 예: LF 20")
+        except ValueError:
+            print("속도는 숫자여야 합니다. 예: LF 20")
         except Exception as e:
-            pass
+            print(f"입력 오류: {e}")
 
 def main():
     xml_path = "config/rami_description/rami_world.xml"
