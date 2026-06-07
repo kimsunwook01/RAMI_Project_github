@@ -1,0 +1,696 @@
+<?xml version="1.0" ?>
+<robot name="robot_RAMI_v1_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find robot_RAMI_v1_urdf_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find robot_RAMI_v1_urdf_description)/urdf/robot_RAMI_v1_urdf.trans" />
+<xacro:include filename="$(find robot_RAMI_v1_urdf_description)/urdf/robot_RAMI_v1_urdf.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="5.236735450237464e-45 1.6694389991095796e-16 0.14282359768738614" rpy="0 0 0"/>
+    <mass value="91.99187597721883"/>
+    <inertia ixx="0.904345" iyy="0.771264" izz="1.256699" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="weel_left_front_1">
+  <inertial>
+    <origin xyz="-0.04042192720646226 -2.7755575615628914e-17 2.7755575615628914e-17" rpy="0 0 0"/>
+    <mass value="4.434930062692104"/>
+    <inertia ixx="0.006057" iyy="0.005355" izz="0.005355" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.15 0.1 -0.065" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/weel_left_front_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.15 0.1 -0.065" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/weel_left_front_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="weel_left_back_1">
+  <inertial>
+    <origin xyz="-0.04042192720646226 -4.163336342344337e-17 2.7755575615628914e-17" rpy="0 0 0"/>
+    <mass value="4.434930062692104"/>
+    <inertia ixx="0.006057" iyy="0.005355" izz="0.005355" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.15 -0.1 -0.065" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/weel_left_back_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.15 -0.1 -0.065" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/weel_left_back_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="weel_right_front_1">
+  <inertial>
+    <origin xyz="0.04042192720646226 -2.7755575615628914e-17 -2.7755575615628914e-17" rpy="0 0 0"/>
+    <mass value="4.434930062692104"/>
+    <inertia ixx="0.006057" iyy="0.005355" izz="0.005355" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.15 0.1 -0.065" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/weel_right_front_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.15 0.1 -0.065" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/weel_right_front_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="weel_right_back_1">
+  <inertial>
+    <origin xyz="0.04042192720646226 -4.163336342344337e-17 -2.7755575615628914e-17" rpy="0 0 0"/>
+    <mass value="4.434930062692104"/>
+    <inertia ixx="0.006057" iyy="0.005355" izz="0.005355" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.15 -0.1 -0.065" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/weel_right_back_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.15 -0.1 -0.065" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/weel_right_back_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="pillar_link_1">
+  <inertial>
+    <origin xyz="0.0 0.0 0.65" rpy="0 0 0"/>
+    <mass value="16.328"/>
+    <inertia ixx="2.301704" iyy="2.301704" izz="0.004354" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.215" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/pillar_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.215" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/pillar_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lift_slide_link_1">
+  <inertial>
+    <origin xyz="0.0 0.019999999999999993 0.0" rpy="0 0 0"/>
+    <mass value="1.6139042237452679"/>
+    <inertia ixx="0.001331" iyy="0.001331" izz="0.001693" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.02 -0.865" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/lift_slide_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.02 -0.865" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/lift_slide_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rotation_link_1">
+  <inertial>
+    <origin xyz="-3.8733921313667243e-17 -0.011034064491522291 -0.030000000000000027" rpy="0 0 0"/>
+    <mass value="4.894030814575847"/>
+    <inertia ixx="0.012634" iyy="0.008358" izz="0.017752" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.895" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/rotation_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.895" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/rotation_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm_link_1_1">
+  <inertial>
+    <origin xyz="-2.4373878592258097e-14 -0.02999999999997563 -0.030000000000000027" rpy="0 0 0"/>
+    <mass value="2.116860093227199"/>
+    <inertia ixx="0.002544" iyy="0.000873" izz="0.002544" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.1 -0.895" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/arm_link_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.1 -0.895" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/arm_link_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm_link_2_1">
+  <inertial>
+    <origin xyz="0.029999999999991558 -0.11076897638558528 0.0" rpy="0 0 0"/>
+    <mass value="5.4700605629283565"/>
+    <inertia ixx="0.022112" iyy="0.003232" izz="0.022162" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.03 0.16 -0.865" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/arm_link_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.03 0.16 -0.865" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/arm_link_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm_link_3_1">
+  <inertial>
+    <origin xyz="0.029999999999989233 -0.11076897638558181 0.0" rpy="0 0 0"/>
+    <mass value="5.4700605629283565"/>
+    <inertia ixx="0.022112" iyy="0.003232" izz="0.022162" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.03 0.36 -0.865" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/arm_link_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.03 0.36 -0.865" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/arm_link_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm_link_4_1">
+  <inertial>
+    <origin xyz="0.03000000000001029 -0.016280521371105028 -1.1102230246251565e-16" rpy="0 0 0"/>
+    <mass value="0.7624920186454387"/>
+    <inertia ixx="0.000549" iyy="0.000593" izz="0.000704" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.03 0.56 -0.865" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/arm_link_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.03 0.56 -0.865" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/arm_link_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm_link_5_1">
+  <inertial>
+    <origin xyz="-5.74651437545981e-15 -0.0252806308785557 0.012605993191931009" rpy="0 0 0"/>
+    <mass value="1.1979673122086651"/>
+    <inertia ixx="0.001203" iyy="0.000805" izz="0.000895" ixy="0.0" iyz="-7.8e-05" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.6 -0.865" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/arm_link_5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.6 -0.865" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/arm_link_5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm_link_6_1">
+  <inertial>
+    <origin xyz="0.004999999999994271 -0.018028241297897152 0.0031645487862005384" rpy="0 0 0"/>
+    <mass value="0.44764954347217284"/>
+    <inertia ixx="0.000233" iyy="0.000106" izz="0.000289" ixy="-0.0" iyz="2.7e-05" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.005 0.63 -0.85" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/arm_link_6_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.005 0.63 -0.85" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/arm_link_6_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="depth_camera_1">
+  <inertial>
+    <origin xyz="-9.650038500203379e-17 -8.041698750169481e-18 0.025499999999999856" rpy="0 0 0"/>
+    <mass value="1.1097676048805947"/>
+    <inertia ixx="0.000487" iyy="0.000487" izz="0.000459" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -1.515" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/depth_camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -1.515" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/depth_camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="gripper_camera_1">
+  <inertial>
+    <origin xyz="-5.71704186315195e-15 -0.0024999999999992806 5.551115123125783e-16" rpy="0 0 0"/>
+    <mass value="0.049323004661359734"/>
+    <inertia ixx="5e-06" iyy="1e-05" izz="5e-06" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.615 -0.915" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/gripper_camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.615 -0.915" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/gripper_camera_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ultrasonic_sensor_1_1">
+  <inertial>
+    <origin xyz="5.551115123125783e-17 0.0 0.009999999999999981" rpy="0 0 0"/>
+    <mass value="0.0628"/>
+    <inertia ixx="4e-06" iyy="4e-06" izz="4e-06" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.14 0.14 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.14 0.14 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ultrasonic_sensor_2_1">
+  <inertial>
+    <origin xyz="0.0 0.0 0.009999999999999981" rpy="0 0 0"/>
+    <mass value="0.0628"/>
+    <inertia ixx="4e-06" iyy="4e-06" izz="4e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.14 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.14 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ultrasonic_sensor_3_1">
+  <inertial>
+    <origin xyz="0.0 0.0 0.009999999999999981" rpy="0 0 0"/>
+    <mass value="0.0628"/>
+    <inertia ixx="4e-06" iyy="4e-06" izz="4e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.14 0.14 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.14 0.14 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ultrasonic_sensor_4_1">
+  <inertial>
+    <origin xyz="0.0 3.3306690738754695e-17 0.009999999999999981" rpy="0 0 0"/>
+    <mass value="0.0628"/>
+    <inertia ixx="4e-06" iyy="4e-06" izz="4e-06" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.14 -0.0 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.14 -0.0 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ultrasonic_sensor_5_1">
+  <inertial>
+    <origin xyz="2.7755575615628914e-17 2.7755575615628914e-17 0.009999999999999981" rpy="0 0 0"/>
+    <mass value="0.0628"/>
+    <inertia ixx="4e-06" iyy="4e-06" izz="4e-06" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.14 -0.14 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.14 -0.14 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ultrasonic_sensor_6_1">
+  <inertial>
+    <origin xyz="1.5543122344752193e-17 0.0 0.009999999999999981" rpy="0 0 0"/>
+    <mass value="0.0628"/>
+    <inertia ixx="4e-06" iyy="4e-06" izz="4e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.14 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_6_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.14 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_6_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ultrasonic_sensor_7_1">
+  <inertial>
+    <origin xyz="0.0 0.0 0.009999999999999981" rpy="0 0 0"/>
+    <mass value="0.0628"/>
+    <inertia ixx="4e-06" iyy="4e-06" izz="4e-06" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.14 -0.14 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_7_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.14 -0.14 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_7_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ultrasonic_sensor_8_1">
+  <inertial>
+    <origin xyz="2.7755575615628914e-17 3.1086244689504386e-17 0.009999999999999981" rpy="0 0 0"/>
+    <mass value="0.0628"/>
+    <inertia ixx="4e-06" iyy="4e-06" izz="4e-06" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.14 -0.0 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_8_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.14 -0.0 -0.195" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/ultrasonic_sensor_8_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="imu_sensor_1">
+  <inertial>
+    <origin xyz="0.0 0.0 -0.010000000000000002" rpy="0 0 0"/>
+    <mass value="0.0628"/>
+    <inertia ixx="4e-06" iyy="4e-06" izz="4e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.055" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/imu_sensor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.055" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find robot_RAMI_v1_urdf_description)/meshes/imu_sensor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="weel_LF_joint" type="continuous">
+  <origin xyz="0.15 -0.1 0.065" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="weel_left_front_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="weel_LB_joint" type="continuous">
+  <origin xyz="0.15 0.1 0.065" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="weel_left_back_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="weel_RF_joint" type="continuous">
+  <origin xyz="-0.15 -0.1 0.065" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="weel_right_front_1"/>
+  <axis xyz="-1.0 -0.0 -0.0"/>
+</joint>
+
+<joint name="weel_RB_joint" type="continuous">
+  <origin xyz="-0.15 0.1 0.065" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="weel_right_back_1"/>
+  <axis xyz="-1.0 -0.0 -0.0"/>
+</joint>
+
+<joint name="pillar_joint" type="fixed">
+  <origin xyz="0.0 0.0 0.215" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="pillar_link_1"/>
+</joint>
+
+<joint name="lift_slide_joint" type="prismatic">
+  <origin xyz="0.0 -0.02 0.65" rpy="0 0 0"/>
+  <parent link="pillar_link_1"/>
+  <child link="lift_slide_link_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="0.62" lower="-0.62" effort="100" velocity="100"/>
+</joint>
+
+<joint name="rotation_joint" type="revolute">
+  <origin xyz="0.0 0.02 0.03" rpy="0 0 0"/>
+  <parent link="lift_slide_link_1"/>
+  <child link="rotation_link_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="3.141593" lower="-3.141593" effort="100" velocity="100"/>
+</joint>
+
+<joint name="arm_joint_1" type="revolute">
+  <origin xyz="-0.0 -0.1 0.0" rpy="0 0 0"/>
+  <parent link="rotation_link_1"/>
+  <child link="arm_link_1_1"/>
+  <axis xyz="-0.0 0.0 -1.0"/>
+  <limit upper="1.570796" lower="-1.570796" effort="100" velocity="100"/>
+</joint>
+
+<joint name="arm_joint_2" type="revolute">
+  <origin xyz="-0.03 -0.06 -0.03" rpy="0 0 0"/>
+  <parent link="arm_link_1_1"/>
+  <child link="arm_link_2_1"/>
+  <axis xyz="-1.0 -0.0 0.0"/>
+  <limit upper="1.570796" lower="-1.570796" effort="100" velocity="100"/>
+</joint>
+
+<joint name="arm_joint_3" type="revolute">
+  <origin xyz="0.0 -0.2 0.0" rpy="0 0 0"/>
+  <parent link="arm_link_2_1"/>
+  <child link="arm_link_3_1"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+  <limit upper="1.570796" lower="-1.570796" effort="100" velocity="100"/>
+</joint>
+
+<joint name="arm_joint_4" type="revolute">
+  <origin xyz="0.0 -0.2 0.0" rpy="0 0 0"/>
+  <parent link="arm_link_3_1"/>
+  <child link="arm_link_4_1"/>
+  <axis xyz="-1.0 -0.0 -0.0"/>
+  <limit upper="1.570796" lower="-1.570796" effort="100" velocity="100"/>
+</joint>
+
+<joint name="arm_joint_5" type="revolute">
+  <origin xyz="0.03 -0.04 0.0" rpy="0 0 0"/>
+  <parent link="arm_link_4_1"/>
+  <child link="arm_link_5_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+  <limit upper="3.141593" lower="-3.141593" effort="100" velocity="100"/>
+</joint>
+
+<joint name="arm_joint_6" type="revolute">
+  <origin xyz="-0.005 -0.03 -0.015" rpy="0 0 0"/>
+  <parent link="arm_link_5_1"/>
+  <child link="arm_link_6_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="1.570796" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="depth_camera_joint" type="fixed">
+  <origin xyz="0.0 0.0 1.3" rpy="0 0 0"/>
+  <parent link="pillar_link_1"/>
+  <child link="depth_camera_1"/>
+</joint>
+
+<joint name="gripper_camera_joint" type="fixed">
+  <origin xyz="0.0 -0.015 0.05" rpy="0 0 0"/>
+  <parent link="arm_link_5_1"/>
+  <child link="gripper_camera_1"/>
+</joint>
+
+<joint name="ultrasonic_sensor_joint_1" type="fixed">
+  <origin xyz="0.14 -0.14 0.195" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="ultrasonic_sensor_1_1"/>
+</joint>
+
+<joint name="ultrasonic_sensor_joint_2" type="fixed">
+  <origin xyz="0.0 -0.14 0.195" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="ultrasonic_sensor_2_1"/>
+</joint>
+
+<joint name="ultrasonic_sensor_joint_3" type="fixed">
+  <origin xyz="-0.14 -0.14 0.195" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="ultrasonic_sensor_3_1"/>
+</joint>
+
+<joint name="ultrasonic_sensor_joint_4" type="fixed">
+  <origin xyz="-0.14 0.0 0.195" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="ultrasonic_sensor_4_1"/>
+</joint>
+
+<joint name="ultrasonic_sensor_joint_5" type="fixed">
+  <origin xyz="-0.14 0.14 0.195" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="ultrasonic_sensor_5_1"/>
+</joint>
+
+<joint name="ultrasonic_sensor_joint_6" type="fixed">
+  <origin xyz="0.0 0.14 0.195" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="ultrasonic_sensor_6_1"/>
+</joint>
+
+<joint name="ultrasonic_sensor_joint_7" type="fixed">
+  <origin xyz="0.14 0.14 0.195" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="ultrasonic_sensor_7_1"/>
+</joint>
+
+<joint name="ultrasonic_sensor_joint_8" type="fixed">
+  <origin xyz="0.14 0.0 0.195" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="ultrasonic_sensor_8_1"/>
+</joint>
+
+<joint name="imu_sensor_joint" type="fixed">
+  <origin xyz="0.0 0.0 0.055" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="imu_sensor_1"/>
+</joint>
+
+</robot>
