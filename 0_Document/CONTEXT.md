@@ -1,0 +1,58 @@
+# 📌 RAMI Project - AI Context & State Synchronization Guide
+
+> [!IMPORTANT]
+> **AI Assistant Instruction**
+> 본 문서는 AI 어시스턴트가 프로젝트의 컨텍스트를 기억 상실 없이 명확히 인지하고, 일관된 방향으로 코딩 및 아키텍처 설계를 이어나가기 위한 최상위 상태 요약 및 지침서입니다.
+> 
+> **지침:** AI 에이전트는 새로운 대화 세션을 시작할 때 반드시 이 문서를 가장 먼저 로드하여 인지해야 하며, 모든 작업(태스크)의 시작 전과 종료 후마다 본 문서의 **'4. 진행상황 타임라인'**을 확인하고 최신화해야 합니다.
+
+---
+
+## 1. 프로젝트 요약 (Project Summary)
+* **프로젝트명:** RAMI (Right-Arm Mobile Intelligence)
+* **목적:** 한국식 실내 주거 환경에서 모바일 매니퓰레이터 로봇의 주행(Navigation), 조작(Manipulation), 공간 및 가상 데이터셋 연동 학습(Learning)을 구현하는 MuJoCo 기반 시뮬레이션 프로젝트
+* **핵심 타겟 하드웨어:** 전방향 이동이 가능한 메카넘 휠 기반 모바일 베이스 + 원기둥 바퀴 가상 조인트 제어 + 단일 매니퓰레이터 로봇암
+
+---
+
+## 2. 핵심 아키텍처 및 코딩 원칙 (Core Architecture & Coding Principles)
+AI 에이전트는 코드를 제안하거나 리뷰할 때 아래 원칙을 엄격히 준수해야 하며, 이를 위반하는 코드는 작성할 수 없습니다.
+
+* **관심사의 분리 (Separation of Concerns):** 
+  * `domain` 계층(물리 수식, FSM 상태 머신)은 외부 인프라 라이브러리(`mujoco` 등)를 절대 직접 import 할 수 없습니다.
+  * 모든 센서 피드백과 액추에이터 제어 명령은 `application/interfaces` 의 추상화된 Protocol 인터페이스를 통해서만 중계됩니다.
+* **통제된 점진적 개발 (Controlled Incremental Development):** 
+  * 한 번에 여러 개의 기능을 동시에 수정하거나 제안하지 않습니다. 반드시 한 번에 하나의 레이어, 하나의 기능 단위로 코드를 작성하고 개발자(인간)의 검토 및 승인을 거쳐야 합니다.
+* **치트 어댑터 원칙 (Rule-based Cheat):** 
+  * 가상 환경의 QR 코드 및 스위치 식별 등 비전 센서 오버헤드는 복잡한 이미지 처리 대신 카메라와 메쉬 간의 물리적 거리/화각(FOV) 연산 조건을 충족할 시 텍스트 ID를 반환하는 규칙 기반 어댑터로 구현합니다.
+* **시각화 격리:** 
+  * 관찰자 시점의 탑뷰 구현을 위한 천장 비가시화 설정(`group="3"`)은 비주얼 영역에서만 필터링하며, 물리 충돌 레이어(`group="4"`)는 온전히 보존하여 초음파 등 센서 감지가 정상 작동하도록 격리합니다.
+
+---
+
+## 3. 관련 문서 링크 (Documentation Links)
+AI는 아키텍처 구조나 도메인 지식의 세부 맥락이 필요할 시 아래 문서를 참조합니다.
+
+* **소프트웨어 아키텍처 설계서:** [RAMI_Software_Architecture.md](file:///d:/Programming/RAMI_Project/0_Document/RAMI_Software_Architecture.md) (클린 4계층 구조 및 폴더 정의)
+* **사용자 정의 가상 데이터셋:** `config/user_config.json` (방 구조, 스위치-전등 매핑 데이터)
+* **로봇 하드웨어 MJCF 정의:** `config/rami_description/rami_world.xml`
+
+---
+
+## 4. 진행상황 타임라인 (Progress Timeline)
+> **[에이전트 준수 사항]** 칸반보드 스타일의 타임라인입니다. 작업 시작 전 상태를 `[진행중]`으로 옮기고, 작업 완료 후 개발자의 컨펌을 받으면 `[완료]`로 이동시키며 완료일자를 기록합니다.
+
+### 🛑 대기 중인 작업 (Todo)
+- `[ ]` **Phase 2:** 리프트 및 로봇암 조인트 자코비안 위치 제어 알고리즘 구현 (`src/domain/controllers/kinematics.py`)
+- `[ ]` **Phase 3:** 손목 카메라 화각(FOV) 연산 기반 가상 QR ID 식별 센서 어댑터 구현 (`src/infrastructure/sensors/vision_processor.py`)
+- `[ ]` **Phase 4:** 한국식 똑딱이 스위치 정면 접근 및 매니퓰레이터 말단 제어 조작 시나리오 테스트
+- `[ ]` **Phase 5:** 문고리 하향 회전 및 동체 후진 연동형 문 개폐 FSM 상태 머신 구현
+
+### ⏳ 진행 중인 작업 (In Progress)
+- `[/]` **Phase 1:** 원기둥 바퀴 기반 모바일 베이스 구축 및 x, y, wz 가상 slide/hinge 관절 제어 초안 작성 (`config/rami_description/rami_world.xml`)
+  * _현재 세부 태스크: 개발자가 직접 검토할 수 있도록 가장 단순화된 형태의 동체 뼈대 MJCF 구조 설계 중_
+
+### ✅ 완료된 작업 (Done)
+- `[x]` **Phase 0:** 구글 클라우드 플랫폼(GCP) 무료 체험판 계정 생성 및 Google Cloud CLI 시스템 전역 연동 완벽 완료 (2026-06-07)
+- `[x]` **Phase 0:** 안티그래비티 IDE 데이터 클라우드 확장 기능 및 ADC 자격 증명 동기화 트러블슈팅 완료 (2026-06-07)
+- `[x]` **Phase 0:** ROBO-Path 사상을 이식한 클린 아키텍처 기반 `RAMI_Software_Architecture.md` 설계서 작성 완료 (2026-06-07)
