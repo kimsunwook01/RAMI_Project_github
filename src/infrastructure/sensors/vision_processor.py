@@ -1,5 +1,7 @@
 import numpy as np
 import mujoco
+import cv2
+from ultralytics import YOLO
 from ultralytics import YOLO
 
 class VisionProcessor:
@@ -25,8 +27,14 @@ class VisionProcessor:
             # RGB 이미지 추출 (H, W, 3) 
             rgb_image = self.renderer.render()
             
-            # YOLO v8 추론 실행 (RGB 이미지를 직접 입력, 터미널 로그 비활성화)
-            results = self.yolo_model(rgb_image, verbose=False)
+            # 디버깅용 캡처 이미지 저장 (첫 프레임만 또는 지속 저장)
+            if camera_name == "head_camera":
+                cv2.imwrite(r"C:\Users\sunny\.gemini\antigravity-ide\brain\27554dc4-80c9-47a9-a5e3-d6d1f0d2e6f8\camera_view.png", cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR))
+            elif camera_name == "gripper_camera":
+                cv2.imwrite(r"C:\Users\sunny\.gemini\antigravity-ide\brain\27554dc4-80c9-47a9-a5e3-d6d1f0d2e6f8\gripper_camera_view.png", cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR))
+            
+            # YOLO v8 추론 실행 (원색 도형 인식을 위해 confidence를 0.05로 대폭 낮춤)
+            results = self.yolo_model(rgb_image, verbose=False, conf=0.05)
             
             detections = []
             for r in results:
