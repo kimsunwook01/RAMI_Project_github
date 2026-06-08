@@ -122,3 +122,74 @@ class RamiMujocoAdapter(RobotHardwareIO):
             theta = self.data.qpos[self.model.jnt_qposadr[j_id]]
             
         return (x, y, theta)
+
+    def get_end_effector_pose(self) -> tuple[list[float], list[float]]:
+        """
+        로봇암 말단(gripper_camera_1)의 현재 전역 좌표 및 방향 행렬(3x3) 반환
+        """
+        body_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_BODY, "gripper_camera_1")
+        # 해당 바디가 없으면 마지막 링크를 기준으로 함
+        if body_id == -1:
+            body_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_BODY, "arm_link_6_1")
+            
+        pos = self.data.xpos[body_id].tolist()
+        mat = self.data.xmat[body_id].reshape(3, 3).tolist()
+        return pos, mat
+
+    def get_jacobian(self) -> tuple[list[list[float]], list[list[float]]]:
+        """
+        현재 매니퓰레이터 자코비안 반환 (크기: 3xNV, 3xNV)
+        여기서 NV는 모델의 전체 degree of freedom 개수입니다.
+        (이후 도메인 계층에서 매니퓰레이터 조인트 인덱스만 슬라이싱하여 사용)
+        """
+        body_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_BODY, "gripper_camera_1")
+        if body_id == -1:
+            body_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_BODY, "arm_link_6_1")
+            
+        import numpy as np
+        jacp = np.zeros((3, self.model.nv))
+        jacr = np.zeros((3, self.model.nv))
+        
+        mujoco.mj_jacBody(self.model, self.data, jacp, jacr, body_id)
+        
+        return jacp.tolist(), jacr.tolist()
+
+    def get_arm_dof_indices(self) -> list[int]:
+        """
+        리프트 및 7개 암 조인트(총 8개)의 qvel(dof) 인덱스 반환.
+        """
+        indices = []
+        for act_id in self.arm_actuator_ids:
+            if act_id != -1:
+                joint_id = self.model.actuator_trnid[act_id, 0]
+                dof_idx = self.model.jnt_dofadr[joint_id]
+                indices.append(dof_idx)
+            else:
+                indices.append(-1)
+        return indices
+
+    def compute_virtual_fk_and_jacobian(self, virtual_joints: list[float]) -> tuple[list[float], list[list[float]], list[list[float]], list[list[float]]]:
+        # 1. 기존 실제 qpos 백업
+        original_qpos = self.data.qpos.copy()
+        
+        # 2. 가상 조인트 각도 삽입
+        for act_id, v_pos in zip(self.arm_actuator_ids, virtual_joints):
+            if act_id != -1:
+                joint_id = self.model.actuator_trnid[act_id, 0]
+                qpos_idx = self.model.jnt_qposadr[joint_id]
+                self.data.qpos[qpos_idx] = v_pos
+                
+        # 3. Kinematics 및 Jacobian 갱신 (시간 진행 안 함)
+        mujoco.mj_kinematics(self.model, self.data)
+        mujoco.mj_comPos(self.model, self.data)
+        
+        # 4. 결과 도출 (FK, Jacobian)
+        pos, rot_mat = self.get_end_effector_pose()
+        jacp, jacr = self.get_jacobian()
+        
+        # 5. 상태 원상 복구
+        self.data.qpos[:] = original_qpos
+        mujoco.mj_kinematics(self.model, self.data)
+        mujoco.mj_comPos(self.model, self.data)
+        
+        return pos, rot_mat, jacp, jacr

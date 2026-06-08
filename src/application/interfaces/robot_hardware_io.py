@@ -65,3 +65,44 @@ class RobotHardwareIO(Protocol):
             tuple[float, float, float]: (x(m), y(m), theta(rad))
         """
         pass
+        
+    def get_end_effector_pose(self) -> tuple[List[float], List[float]]:
+        """
+        로봇암 말단(End-effector, 예: gripper_camera_1)의 현재 전역(또는 베이스 기준) 좌표 및 방향을 반환합니다.
+        
+        Returns:
+            tuple[List[float], List[float]]: (position[x,y,z], orientation_matrix[3x3])
+        """
+        pass
+        
+    def get_jacobian(self) -> tuple[List[List[float]], List[List[float]]]:
+        """
+        현재 관절 상태에서의 매니퓰레이터 자코비안(Jacobian) 행렬을 반환합니다.
+        
+        Returns:
+            tuple[jacp, jacr]: 
+                jacp: 3 x N 위치 자코비안 (N은 조인트 수)
+                jacr: 3 x N 회전 자코비안
+        """
+        pass
+        
+    def get_arm_dof_indices(self) -> List[int]:
+        """
+        리프트를 포함한 8개 매니퓰레이터 조인트의 속도(qvel/dof) 인덱스를 반환합니다.
+        자코비안 행렬에서 해당 열(Column)을 추출하기 위해 사용됩니다.
+        
+        Returns:
+            List[int]: [리프트, 회전, 암1, 암2, 암3, 암4, 암5, 암6]
+        """
+        pass
+        
+    def compute_virtual_fk_and_jacobian(self, virtual_joints: List[float]) -> tuple[List[float], List[List[float]], List[List[float]], List[List[float]]]:
+        """
+        주어진 가상의 조인트 각도로 물리엔진 상태를 업데이트한 후(시뮬레이션 시간 진행 없음),
+        순운동학(말단 좌표 및 방향)과 자코비안 행렬을 계산해 반환합니다.
+        계산 후 내부적으로 기존 상태(원래 관절 각도)로 원상 복구해야 합니다.
+        
+        Returns:
+            tuple: (pos, rot_mat, jacp, jacr)
+        """
+        pass

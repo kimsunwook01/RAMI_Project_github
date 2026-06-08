@@ -31,6 +31,10 @@
   </asset>
 
   <worldbody>
+    <!-- 시각적 IK 타겟 마커 (빨간 반투명 구체, mocap 바디로 설정하여 런타임 이동 가능) -->
+    <body name="target_marker" pos="0 0 0" mocap="true">
+        <geom type="sphere" size="0.05" rgba="1 0 0 0.5" contype="0" conaffinity="0" group="1"/>
+    </body>
     <light pos="0 0 3" dir="0 0 -1" directional="true" /><geom name="floor" type="plane" size="5 5 0.05" rgba="0.8 0.9 0.8 1" />
     <body name="base_link" pos="0 0 -0.015">
       <inertial pos="0 0 0.264356" mass="109.995" diaginertia="12.2755 12.1424 1.27632" />
@@ -126,12 +130,12 @@
     <!-- 리프트 및 암 조인트 Position Actuator -->
     <position name="act_lift" joint="lift_slide_joint" kp="50000" forcerange="-10000 10000" ctrlrange="-0.62 0.62" />
     <position name="act_rot" joint="rotation_joint" kp="10000" forcerange="-1000 1000" ctrlrange="-3.14159 3.14159" />
-    <position name="act_arm1" joint="arm_joint_1" kp="10000" forcerange="-1000 1000" ctrlrange="-1.5708 1.5708" />
-    <position name="act_arm2" joint="arm_joint_2" kp="10000" forcerange="-1000 1000" ctrlrange="-1.5708 1.5708" />
-    <position name="act_arm3" joint="arm_joint_3" kp="10000" forcerange="-1000 1000" ctrlrange="-1.5708 1.5708" />
-    <position name="act_arm4" joint="arm_joint_4" kp="5000" forcerange="-1000 1000" ctrlrange="-1.5708 1.5708" />
-    <position name="act_arm5" joint="arm_joint_5" kp="5000" forcerange="-1000 1000" ctrlrange="-3.14159 3.14159" />
-    <position name="act_arm6" joint="arm_joint_6" kp="5000" forcerange="-1000 1000" ctrlrange="0 1.5708" />
+    <position name="act_arm1" joint="arm_joint_1" kp="15000" forcerange="-1000 1000" ctrlrange="-1.5708 1.5708" />
+    <position name="act_arm2" joint="arm_joint_2" kp="15000" forcerange="-1000 1000" ctrlrange="-1.5708 1.5708" />
+    <position name="act_arm3" joint="arm_joint_3" kp="15000" forcerange="-1000 1000" ctrlrange="-1.5708 1.5708" />
+    <position name="act_arm4" joint="arm_joint_4" kp="15000" forcerange="-1000 1000" ctrlrange="-1.5708 1.5708" />
+    <position name="act_arm5" joint="arm_joint_5" kp="15000" forcerange="-1000 1000" ctrlrange="-3.14159 3.14159" />
+    <position name="act_arm6" joint="arm_joint_6" kp="15000" forcerange="-1000 1000" ctrlrange="0 1.5708" />
   </actuator>
 
 </mujoco>
