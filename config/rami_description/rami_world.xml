@@ -42,7 +42,20 @@
     <body name="target_marker" pos="0 0 0" mocap="true">
         <geom type="sphere" size="0.05" rgba="1 0 0 0.5" contype="0" conaffinity="0" group="1"/>
     </body>
-    <light pos="0 0 3" dir="0 0 -1" directional="true" castshadow="false" /><geom name="floor" type="plane" size="5 5 0.05" rgba="0.8 0.9 0.8 1" />
+    <light pos="0 0 3" dir="0 0 -1" directional="true" castshadow="false" />
+    <!-- 바닥 넓이를 2배로 확장 (size 5 -> 10) -->
+    <geom name="floor" type="plane" size="10 10 0.05" rgba="0.8 0.9 0.8 1" />
+    
+    <!-- Test 18-1: 로봇 정면(Y축 음수 방향) 5m 거리에 임의의 객체 2개 생성 -->
+    <!-- 참고: YOLOv8이 원색 기본 도형을 특정 객체(예: 스포츠 공, 물병, 박스 등)로 인식하는지 테스트합니다. -->
+    <body name="test_object_cylinder" pos="0 -5 0.5">
+        <freejoint />
+        <geom type="cylinder" size="0.25 0.5" rgba="0.8 0.2 0.2 1" />
+    </body>
+    <body name="test_object_box" pos="0.8 -5 0.4">
+        <freejoint />
+        <geom type="box" size="0.4 0.4 0.4" rgba="0.2 0.4 0.8 1" />
+    </body>
     <body name="base_link" pos="0 0 -0.015">
       <inertial pos="0 0 0.264356" mass="109.995" diaginertia="12.2755 12.1424 1.27632" />
       <joint name="root_x" type="slide" axis="1 0 0" damping="2" frictionloss="0.5" />

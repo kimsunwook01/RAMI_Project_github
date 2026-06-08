@@ -1,32 +1,36 @@
 import mujoco
-from typing import List
 
 class UltrasonicProcessor:
-    def __init__(self, model, data):
+    def __init__(self, model: mujoco.MjModel):
         self.model = model
-        self.data = data
-        self.sensor_names = [f"us_{i}_sensor" for i in range(1, 9)]
-        self.sensor_ids = []
-        for name in self.sensor_names:
-            sid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SENSOR, name)
-            if sid != -1:
-                self.sensor_ids.append(sid)
+        self.sensor_count = 8
+        self.sensor_adrs = []
+        
+        # 8개의 초음파 센서 adr(주소) 미리 캐싱
+        for i in range(1, self.sensor_count + 1):
+            sensor_name = f"ultrasonic_sensor_{i}"
+            try:
+                sensor_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_SENSOR, sensor_name)
+                self.sensor_adrs.append(model.sensor_adr[sensor_id])
+            except ValueError:
+                self.sensor_adrs.append(-1) # 센서가 없는 경우
+
+    def process(self, data: mujoco.MjData):
+        """
+        data.sensordata에서 8채널 거리 측정값을 읽어옵니다.
+        """
+        readings = {}
+        min_dist = float('inf')
+        
+        for i, adr in enumerate(self.sensor_adrs):
+            if adr != -1:
+                # rangefinder 센서는 스칼라 값 1개를 가짐
+                dist = data.sensordata[adr]
+                readings[f"ch{i+1}"] = dist
+                if dist > 0 and dist < min_dist:
+                    min_dist = dist
             else:
-                print(f"[Warning] Sensor {name} not found in model.")
-
-    def get_all_distances(self) -> List[float]:
-        distances = []
-        for sid in self.sensor_ids:
-            adr = self.model.sensor_adr[sid]
-            dist = self.data.sensordata[adr]
-            # MuJoCo rangefinder returns -1 if no geom is hit within its max range
-            if dist < 0:
-                dist = 5.0 # Max range
-            distances.append(float(dist))
-        return distances
-
-    def get_minimum_distance(self) -> float:
-        dists = self.get_all_distances()
-        if not dists:
-            return 5.0
-        return min(dists)
+                readings[f"ch{i+1}"] = -1.0
+                
+        readings["min_dist"] = min_dist if min_dist != float('inf') else -1.0
+        return readings
