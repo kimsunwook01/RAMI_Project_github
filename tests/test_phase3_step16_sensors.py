@@ -21,6 +21,9 @@ def main():
     print("종료하려면 뷰어 창을 닫으세요.")
     
     with mujoco.viewer.launch_passive(client.model, client.data) as viewer:
+        # 선임 에이전트의 조언에 따라 분리된 비전 전용 그룹(group="5")을 뷰어에서 활성화하여 보이게 만듭니다.
+        viewer.opt.geomgroup[5] = 1
+        
         while viewer.is_running():
             step_start = time.time()
             client.step()
