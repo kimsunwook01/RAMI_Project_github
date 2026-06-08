@@ -181,7 +181,8 @@
   </actuator>
 
   <sensor>
-    <imu name="imu_sensor" site="imu_site" />
+    <accelerometer name="imu_accel" site="imu_site" />
+    <gyro name="imu_gyro" site="imu_site" />
     <rangefinder name="ultrasonic_sensor_1" site="us_site_1" />
     <rangefinder name="ultrasonic_sensor_2" site="us_site_2" />
     <rangefinder name="ultrasonic_sensor_3" site="us_site_3" />
