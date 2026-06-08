@@ -1,29 +1,52 @@
+import numpy as np
 import mujoco
+from ultralytics import YOLO
 
 class VisionProcessor:
-    def __init__(self, model, data):
+    def __init__(self, model: mujoco.MjModel):
         self.model = model
-        self.data = data
         
-    def get_camera_info(self, camera_name: str) -> dict:
+        # YOLOv8 모델 초기화 (가장 빠르고 가벼운 Nano 모델 사용)
+        self.yolo_model = YOLO('yolov8n.pt')
+        
+        # 렌더러 초기화 (일반적인 640x480 해상도 사용)
+        self.width = 640
+        self.height = 480
+        self.renderer = mujoco.Renderer(self.model, self.height, self.width)
+        
+    def process_camera(self, data: mujoco.MjData, camera_name: str):
         """
-        특정 카메라의 현재 전역(Global) 위치 및 시선 벡터(Forward Vector)를 반환합니다.
-        Cheat Adapter 원칙에 따라, 실제 이미지 대신 기하학적 메타데이터를 활용합니다.
+        주어진 카메라에서 RGB 프레임을 렌더링하고 YOLO v8으로 객체를 탐지합니다.
         """
-        cam_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_CAMERA, camera_name)
-        if cam_id == -1:
-            return {"error": f"Camera '{camera_name}' not found"}
+        try:
+            # 렌더러의 시점을 해당 카메라로 업데이트
+            self.renderer.update_scene(data, camera=camera_name)
             
-        pos = [float(x) for x in self.data.cam_xpos[cam_id]]
-        
-        # cam_xmat은 1D 배열(9개 요소)이므로 3x3 회전 행렬로 간주
-        mat = self.data.cam_xmat[cam_id]
-        
-        # MuJoCo 카메라의 정면(Forward) 방향은 로컬 Z축의 음의 방향(-Z)입니다.
-        # 회전 행렬의 3번째 열(Z축 벡터)에 -1을 곱합니다.
-        fwd = [-float(mat[2]), -float(mat[5]), -float(mat[8])]
-        
-        return {
-            "pos": pos,
-            "forward_vector": fwd
-        }
+            # RGB 이미지 추출 (H, W, 3) 
+            rgb_image = self.renderer.render()
+            
+            # YOLO v8 추론 실행 (RGB 이미지를 직접 입력, 터미널 로그 비활성화)
+            results = self.yolo_model(rgb_image, verbose=False)
+            
+            detections = []
+            for r in results:
+                boxes = r.boxes
+                for box in boxes:
+                    # 박스 좌표 (x1, y1, x2, y2)
+                    b = box.xyxy[0].tolist()
+                    # 클래스 및 신뢰도
+                    cls_id = int(box.cls[0].item())
+                    conf = box.conf[0].item()
+                    cls_name = self.yolo_model.names[cls_id]
+                    
+                    detections.append({
+                        "class": cls_name,
+                        "confidence": conf,
+                        "bbox": [int(x) for x in b]
+                    })
+                    
+            return detections
+            
+        except Exception as e:
+            print(f"[{camera_name}] Vision processing error: {e}")
+            return []

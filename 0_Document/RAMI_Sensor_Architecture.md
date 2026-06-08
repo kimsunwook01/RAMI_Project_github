@@ -1,7 +1,7 @@
 # RAMI 센서 구현 아키텍처 설계 문서 (Phase 3)
 
 ## 1. 개요
-본 문서는 RAMI(Right-Arm Mobile Intelligence) 로봇의 **Phase 3: 비전 시스템 및 센서 연동**에 대한 세부 아키텍처와 구현 방침을 기술합니다. 무거운 이미지 프로세싱 부하를 없애고 시뮬레이터의 기하학적 연산을 활용하는 **치트 어댑터 원칙(Cheat Adapter Principle)**을 적용하여 실시간 센서 처리를 달성합니다.
+본 문서는 RAMI(Right-Arm Mobile Intelligence) 로봇의 **Phase 3: 비전 시스템 및 센서 연동**에 대한 세부 아키텍처와 구현 방침을 기술합니다. 초음파/IMU 센서는 무주코 시스템 메모리를 직접 파싱하여 고속으로 처리하며, 비전 시스템(카메라)은 향후 실제 로봇 이식성(Sim-to-Real)을 극대화하기 위해 오프스크린 렌더링(Offscreen Rendering)과 **YOLO v8** 기반의 정석적인 영상 처리(Computer Vision) 파이프라인을 도입합니다.
 
 ## 2. 센서 하드웨어 및 시각화 명세
 
@@ -48,8 +48,7 @@ RAMI의 센서 데이터 처리는 레이어드 아키텍처(Layered Architectur
 
 ### 3.1. Infrastructure Layer (Processors)
 * **`VisionProcessor` (`src/infrastructure/sensors/vision_processor.py`)**
-  * **역할:** 화각(FOV) 및 거리 조건을 계산하고, `mujoco.mj_ray` 광선 추적을 이용해 장애물 가림(Occlusion) 여부를 판단합니다. 
-  * **치트 로직:** 실제 이미지 프레임을 렌더링하지 않고 벡터 내적(Dot product)만으로 시야 내 객체를 판별합니다.
+  * **역할:** 정석적인 영상 처리 파이프라인. `mujoco.Renderer`를 통해 실제 카메라 관점의 RGB 픽셀 배열을 실시간으로 캡처한 뒤, YOLO v8(Nano) 모델을 통해 실제 하드웨어와 100% 동일한 과정으로 Bounding Box, Class, Confidence를 산출합니다.
 * **`UltrasonicProcessor` (`src/infrastructure/sensors/ultrasonic_processor.py`)**
   * **역할:** 8채널 거리 데이터 수집 및 최소 거리(`min_dist`) 필터링을 수행합니다. 노이즈 처리 및 비상 정지(Fail-safe) 트리거의 기반이 됩니다.
 * **`ImuProcessor` (`src/infrastructure/sensors/imu_processor.py`)**
