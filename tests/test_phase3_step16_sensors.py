@@ -23,8 +23,6 @@ def main():
     with mujoco.viewer.launch_passive(client.model, client.data) as viewer:
         # 선임 에이전트의 조언에 따라 분리된 비전 전용 그룹(group="5")을 뷰어에서 활성화하여 보이게 만듭니다.
         viewer.opt.geomgroup[5] = 1
-        # 시각화 도형의 그림자가 화면을 가리는 것을 방지하기 위해 뷰어 전체 그림자를 끕니다.
-        viewer.opt.flags[mujoco.mjtVisFlag.mjVIS_SHADOW] = False
         
         while viewer.is_running():
             step_start = time.time()
