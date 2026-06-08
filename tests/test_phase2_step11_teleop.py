@@ -21,7 +21,7 @@ def terminal_input_thread():
     print("  ROT: -3.14 ~ 3.14")
     print("  ARM1~4: -1.57 ~ 1.57")
     print("  ARM5: -3.14 ~ 3.14")
-    print("  ARM6: -1.57 ~ 0.0")
+    print("  ARM6: 0.0 ~ 1.57")
     print("사용법: [조인트이름] [목표값] 을 입력하고 [엔터]를 누르세요.")
     print("  예: LIFT 0.5")
     print("  예: ROT 1.57")
@@ -37,7 +37,7 @@ def terminal_input_thread():
         'ARM3': (-1.57, 1.57, 4),
         'ARM4': (-1.57, 1.57, 5),
         'ARM5': (-3.14, 3.14, 6),
-        'ARM6': (-1.57, 0.0, 7),
+        'ARM6': (0.0, 1.57, 7),
     }
     
     while True:
@@ -88,6 +88,10 @@ def main():
             
             client.step()
             viewer.sync()
+            
+            # 피드백 출력을 원하는 경우 주석 해제
+            # actual = adapter.read_arm_joints()
+            # print(f"Actual LIFT: {actual[0]:.2f}, ARM1: {actual[2]:.2f}", end='\r')
             
             time_until_next = client.model.opt.timestep - (time.time() - step_start)
             if time_until_next > 0:

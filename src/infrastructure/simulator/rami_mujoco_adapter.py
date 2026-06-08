@@ -64,3 +64,61 @@ class RamiMujocoAdapter(RobotHardwareIO):
         for idx, act_id in enumerate(self.arm_actuator_ids):
             if act_id != -1:
                 self.data.ctrl[act_id] = target_positions[idx]
+
+    def read_arm_joints(self) -> list[float]:
+        """
+        리프트 및 7개 암 조인트(총 8개)의 실제 현재 위치(qpos)를 읽어옵니다.
+        순서는 control_arm_joints 와 동일합니다.
+        """
+        actual_positions = []
+        # 액추에이터 ID로부터 매핑된 조인트의 인덱스를 찾아 qpos를 읽습니다.
+        for act_id in self.arm_actuator_ids:
+            if act_id != -1:
+                # actuator_trnid 의 첫번째 값이 해당하는 joint_id 입니다.
+                joint_id = self.model.actuator_trnid[act_id, 0]
+                qpos_idx = self.model.jnt_qposadr[joint_id]
+                actual_positions.append(self.data.qpos[qpos_idx])
+            else:
+                actual_positions.append(0.0)
+        return actual_positions
+
+    def read_wheel_joints(self) -> list[float]:
+        """
+        4개 바퀴의 실제 회전 각도를 읽어옵니다.
+        """
+        wheel_positions = []
+        for act_id in [self.w_lf_id, self.w_lb_id, self.w_rf_id, self.w_rb_id]:
+            if act_id != -1:
+                joint_id = self.model.actuator_trnid[act_id, 0]
+                qpos_idx = self.model.jnt_qposadr[joint_id]
+                wheel_positions.append(self.data.qpos[qpos_idx])
+            else:
+                wheel_positions.append(0.0)
+                
+        # 오른쪽 바퀴들은 구동 방향이 역방향이므로 센서값도 반전
+        wheel_positions[2] = -wheel_positions[2]
+        wheel_positions[3] = -wheel_positions[3]
+        return wheel_positions
+        
+    def read_base_pose(self) -> tuple[float, float, float]:
+        """
+        베이스 조인트(root_x, root_y, root_z_rot)의 실제 위치를 읽어옵니다.
+        """
+        x = y = theta = 0.0
+        
+        # vx_id -> root_x (좌우 이동, Y)
+        if self.vx_id != -1:
+            j_id = self.model.actuator_trnid[self.vx_id, 0]
+            y = self.data.qpos[self.model.jnt_qposadr[j_id]]
+            
+        # vy_id -> root_y (전후 이동, -X)
+        if self.vy_id != -1:
+            j_id = self.model.actuator_trnid[self.vy_id, 0]
+            x = -self.data.qpos[self.model.jnt_qposadr[j_id]]
+            
+        # wz_id -> root_z_rot (회전)
+        if self.wz_id != -1:
+            j_id = self.model.actuator_trnid[self.wz_id, 0]
+            theta = self.data.qpos[self.model.jnt_qposadr[j_id]]
+            
+        return (x, y, theta)

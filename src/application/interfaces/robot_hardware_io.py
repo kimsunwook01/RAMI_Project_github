@@ -38,3 +38,30 @@ class RobotHardwareIO(Protocol):
                 단, 리프트 포함 총 8개의 액추에이터가 존재함.
         """
         pass
+        
+    def read_arm_joints(self) -> List[float]:
+        """
+        리프트를 포함한 로봇암 7개 조인트의 실제 위치/각도를 읽어옵니다.
+        
+        Returns:
+            List[float]: [리프트(m), 회전관절(rad), 암1(rad), 암2(rad), 암3(rad), 암4(rad), 암5(rad), 암6(rad)]
+        """
+        pass
+        
+    def read_wheel_joints(self) -> List[float]:
+        """
+        4개 바퀴 조인트의 실제 회전 각도(Position)를 읽어옵니다. (Odometry 및 폐루프 제어용)
+        
+        Returns:
+            List[float]: [w_lf(rad), w_lb(rad), w_rf(rad), w_rb(rad)]
+        """
+        pass
+        
+    def read_base_pose(self) -> tuple[float, float, float]:
+        """
+        로봇 동체의 실제 위치 및 자세를 읽어옵니다. (관성에 의한 밀림 보상용)
+        
+        Returns:
+            tuple[float, float, float]: (x(m), y(m), theta(rad))
+        """
+        pass

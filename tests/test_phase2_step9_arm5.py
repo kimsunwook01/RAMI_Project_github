@@ -1,7 +1,6 @@
 import os
 import sys
 import time
-import math
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
@@ -15,18 +14,25 @@ def main():
     client = MujocoClient(xml_path)
     adapter = RamiMujocoAdapter(client.model, client.data)
     
-    print("=== [Step 9] arm_joint_5 자동 왕복 테스트 ===")
-    print("arm_joint_5 가 -180도(-3.14) ~ 180도(3.14) 범위를 왕복 회전합니다.")
+    print("=== [Step 9] arm_joint_5 피드백 기반 자동 왕복 테스트 ===")
     
     target_positions = [0.0] * 8
     
+    joint_idx = 6
+    limit_max = 3.14
+    limit_min = -3.14
+    current_target = limit_max
+    target_positions[joint_idx] = current_target
+    
     with mujoco.viewer.launch_passive(client.model, client.data) as viewer:
-        start_time = time.time()
         while viewer.is_running():
             step_start = time.time()
+            actual_positions = adapter.read_arm_joints()
+            actual_angle = actual_positions[joint_idx]
             
-            elapsed = time.time() - start_time
-            target_positions[6] = math.sin(elapsed) * 3.14
+            if abs(actual_angle - current_target) < 0.05:
+                current_target = limit_min if current_target > 0 else limit_max
+                target_positions[joint_idx] = current_target
             
             adapter.move_base(0.0, 0.0, 0.0)
             adapter.control_wheels(0.0, 0.0, 0.0, 0.0)
