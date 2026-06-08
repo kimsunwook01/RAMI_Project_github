@@ -28,6 +28,11 @@
     <mesh name="ultrasonic_sensor_7_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_7_1.stl" scale="0.001 0.001 0.001" />
     <mesh name="ultrasonic_sensor_8_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_8_1.stl" scale="0.001 0.001 0.001" />
     <mesh name="imu_sensor_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/imu_sensor_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="fov_pyramid" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/fov_pyramid.stl" scale="0.577 0.577 1.0" />
+    <mesh name="fov_pyramid_10m" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/fov_pyramid.stl" scale="8.391 8.391 10.0" />
+    <mesh name="fov_cone" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/fov_cone.stl" scale="0.65 0.65 5.0" />
+    <material name="mat_cam_fov" emission="1" specular="0" rgba="1 1 0 0.3" />
+    <material name="mat_us_fov" emission="1" specular="0" rgba="0.5 0.8 1 0.3" />
   </asset>
 
   <worldbody>
@@ -44,15 +49,43 @@
       <geom type="mesh" mesh="base_link" contype="1" conaffinity="1" />
       <geom type="mesh" mesh="pillar_link_1" contype="2" conaffinity="2" />
       <geom type="mesh" mesh="depth_camera_1" contype="0" conaffinity="0" />
+      <camera name="head_camera" pos="0 0 1.54049" zaxis="0 1 0" fovy="80" />
+      <geom type="mesh" mesh="fov_pyramid_10m" pos="0 0 1.54049" zaxis="0 1 0" material="mat_cam_fov" contype="0" conaffinity="0" group="4" />
+      
       <geom type="mesh" mesh="ultrasonic_sensor_1_1" contype="0" conaffinity="0" />
+      <site name="us_1" pos="0.14 -0.14 0.205" zaxis="-1 1 0" type="sphere" size="0.01" rgba="0 0 0 0" />
+      <geom type="mesh" mesh="fov_cone" pos="0.14 -0.14 0.205" zaxis="-1 1 0" material="mat_us_fov" contype="0" conaffinity="0" group="5" />
+      
       <geom type="mesh" mesh="ultrasonic_sensor_2_1" contype="0" conaffinity="0" />
+      <site name="us_2" pos="0 -0.14 0.205" zaxis="0 1 0" type="sphere" size="0.01" rgba="0 0 0 0" />
+      <geom type="mesh" mesh="fov_cone" pos="0 -0.14 0.205" zaxis="0 1 0" material="mat_us_fov" contype="0" conaffinity="0" group="5" />
+      
       <geom type="mesh" mesh="ultrasonic_sensor_3_1" contype="0" conaffinity="0" />
+      <site name="us_3" pos="-0.14 -0.14 0.205" zaxis="1 1 0" type="sphere" size="0.01" rgba="0 0 0 0" />
+      <geom type="mesh" mesh="fov_cone" pos="-0.14 -0.14 0.205" zaxis="1 1 0" material="mat_us_fov" contype="0" conaffinity="0" group="5" />
+      
       <geom type="mesh" mesh="ultrasonic_sensor_4_1" contype="0" conaffinity="0" />
+      <site name="us_4" pos="-0.14 0 0.205" zaxis="1 0 0" type="sphere" size="0.01" rgba="0 0 0 0" />
+      <geom type="mesh" mesh="fov_cone" pos="-0.14 0 0.205" zaxis="1 0 0" material="mat_us_fov" contype="0" conaffinity="0" group="5" />
+      
       <geom type="mesh" mesh="ultrasonic_sensor_5_1" contype="0" conaffinity="0" />
+      <site name="us_5" pos="-0.14 0.14 0.205" zaxis="1 -1 0" type="sphere" size="0.01" rgba="0 0 0 0" />
+      <geom type="mesh" mesh="fov_cone" pos="-0.14 0.14 0.205" zaxis="1 -1 0" material="mat_us_fov" contype="0" conaffinity="0" group="5" />
+      
       <geom type="mesh" mesh="ultrasonic_sensor_6_1" contype="0" conaffinity="0" />
+      <site name="us_6" pos="0 0.14 0.205" zaxis="0 -1 0" type="sphere" size="0.01" rgba="0 0 0 0" />
+      <geom type="mesh" mesh="fov_cone" pos="0 0.14 0.205" zaxis="0 -1 0" material="mat_us_fov" contype="0" conaffinity="0" group="5" />
+      
       <geom type="mesh" mesh="ultrasonic_sensor_7_1" contype="0" conaffinity="0" />
+      <site name="us_7" pos="0.14 0.14 0.205" zaxis="-1 -1 0" type="sphere" size="0.01" rgba="0 0 0 0" />
+      <geom type="mesh" mesh="fov_cone" pos="0.14 0.14 0.205" zaxis="-1 -1 0" material="mat_us_fov" contype="0" conaffinity="0" group="5" />
+      
       <geom type="mesh" mesh="ultrasonic_sensor_8_1" contype="0" conaffinity="0" />
+      <site name="us_8" pos="0.14 0 0.205" zaxis="-1 0 0" type="sphere" size="0.01" rgba="0 0 0 0" />
+      <geom type="mesh" mesh="fov_cone" pos="0.14 0 0.205" zaxis="-1 0 0" material="mat_us_fov" contype="0" conaffinity="0" group="5" />
+      
       <geom type="mesh" mesh="imu_sensor_1" contype="0" conaffinity="0" />
+      <site name="imu_site" pos="0 0 0.03" type="sphere" size="0.01" rgba="0 0 0 0" />
       <body name="weel_left_front_1" pos="0.15 -0.1 0.065">
         <inertial pos="-0.0404219 0 0" mass="4.43493" diaginertia="0.006057 0.005355 0.005355" />
         <joint name="weel_LF_joint" pos="0 0 0" axis="1 0 0" damping="0.1" frictionloss="0.01" />
@@ -102,6 +135,8 @@
                     <joint name="arm_joint_5" pos="0 0 0" axis="0 1 0" range="-3.14159 3.14159" actuatorfrcrange="-1000 1000" damping="50" frictionloss="10" />
                     <geom pos="0 0.6 -0.865" type="mesh" mesh="arm_link_5_1" contype="3" conaffinity="3" />
                     <geom pos="0 0.6 -0.865" quat="1 0 0 0" type="mesh" mesh="gripper_camera_1" />
+                    <camera name="gripper_camera" pos="0 -0.0175 0.05" zaxis="0 1 0" fovy="60" />
+                    <geom type="mesh" mesh="fov_pyramid" pos="0 -0.0175 0.05" zaxis="0 1 0" material="mat_cam_fov" contype="0" conaffinity="0" group="4" />
                     <body name="arm_link_6_1" pos="-0.005 -0.03 -0.015">
                       <inertial pos="0.005 -0.0180282 0.00316455" quat="0.534551 0.462877 -0.462877 0.534551" mass="0.44765" diaginertia="0.0002929 0.000233 0.0001021" />
                       <joint name="arm_joint_6" pos="0 0 0" axis="1 0 0" range="0 1.5708" actuatorfrcrange="-1000 1000" damping="50" frictionloss="10" />
@@ -137,5 +172,21 @@
     <position name="act_arm5" joint="arm_joint_5" kp="15000" forcerange="-1000 1000" ctrlrange="-3.14159 3.14159" />
     <position name="act_arm6" joint="arm_joint_6" kp="15000" forcerange="-1000 1000" ctrlrange="0 1.5708" />
   </actuator>
+
+  <sensor>
+    <!-- Ultrasonic Rangefinders (Max distance 5m) -->
+    <rangefinder name="us_1_sensor" site="us_1" />
+    <rangefinder name="us_2_sensor" site="us_2" />
+    <rangefinder name="us_3_sensor" site="us_3" />
+    <rangefinder name="us_4_sensor" site="us_4" />
+    <rangefinder name="us_5_sensor" site="us_5" />
+    <rangefinder name="us_6_sensor" site="us_6" />
+    <rangefinder name="us_7_sensor" site="us_7" />
+    <rangefinder name="us_8_sensor" site="us_8" />
+    
+    <!-- IMU Sensors -->
+    <accelerometer name="imu_accel" site="imu_site" />
+    <gyro name="imu_gyro" site="imu_site" />
+  </sensor>
 
 </mujoco>
