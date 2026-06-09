@@ -38,14 +38,14 @@
     <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="toggle_switch_case_room_1_1" />
     <geom pos="0 0 0" type="mesh" mesh="key_switch_case_room_2_1" />
     <geom type="mesh" mesh="ceiling_v1_1" group="3" />
-    <geom type="mesh" mesh="lamp_r50_kitchen_1_1" />
-    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="lamp_r50_kitchen_1_1" />
-    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="lamp_r50_kitchen_1_1" />
-    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="lamp_r50_kitchen_1_1" />
-    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="lamp_r50_kitchen_1_1" />
-    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="lamp_r50_kitchen_1_1" />
-    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="lamp_r50_kitchen_1_1" />
-    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="lamp_r50_kitchen_1_1" />
+    <geom size="0.025 0.025 0.01" pos="2.5 1.5 5.45" type="box" />
+    <geom size="0.025 0.025 0.01" pos="10.5 1.5 5.45" type="box" />
+    <geom size="0.025 0.025 0.01" pos="18.5 1.5 5.45" type="box" />
+    <geom size="0.025 0.025 0.01" pos="18.5 5.5 5.45" type="box" />
+    <geom size="0.1 0.1 0.01" pos="5 8 5.45" type="box" />
+    <geom size="0.1 0.1 0.01" pos="13 8 5.45" type="box" />
+    <geom size="0.05 0.15 0.01" pos="11 16 5.45" type="box" />
+    <geom size="0.05 0.15 0.01" pos="15 16 5.45" type="box" />
     <geom type="mesh" mesh="lamp_r50_kitchen_1_1" />
     <body name="door_1_1" pos="5.2 3.4 2.1">
       <inertial pos="-1.02357 -0.025 0.000844161" quat="0.707107 -0.000251454 -0.000251454 0.707107" mass="3205.02" diaginertia="5378.26 4258.48 1121.11" />

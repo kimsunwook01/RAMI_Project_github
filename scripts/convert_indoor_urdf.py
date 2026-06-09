@@ -40,10 +40,46 @@ def main():
                     filepath = filename
                 if not os.path.exists(filepath):
                     if "lamp" in filename.lower():
-                        # 대체용 전등 파일 경로로 덮어쓰기
-                        fallback_path = os.path.join(root_dir, "indoor_space_urdf_description/meshes/lamp_r50_kitchen_1_1.stl").replace("\\", "/")
-                        mesh.set("filename", fallback_path)
-                        print(f"Warning: Mesh not found, but substituted with fallback '{link.get('name')}': {filepath}")
+                        link_name = link.get("name")
+                        if "*" in link_name:
+                            # 1. Parse size from name (e.g., lamp_100*300_...)
+                            parts = link_name.split("_")
+                            size_str = "0.1 0.1 0.02" # default
+                            for p in parts:
+                                if "*" in p:
+                                    dims = p.split("*")
+                                    if len(dims) == 2:
+                                        try:
+                                            w = float(dims[0]) / 1000.0
+                                            l = float(dims[1]) / 1000.0
+                                            size_str = f"{w} {l} 0.02"
+                                        except:
+                                            pass
+                                    break
+                            
+                            # 2. Replace visual/collision mesh with box, and fix origins
+                            inertial = link.find("inertial")
+                            i_origin = inertial.find("origin") if inertial is not None else None
+                            
+                            for vis_or_col in link.findall("visual") + link.findall("collision"):
+                                geom = vis_or_col.find("geometry")
+                                if geom is not None:
+                                    for child in list(geom):
+                                        geom.remove(child)
+                                    ET.SubElement(geom, "box", {"size": size_str})
+                                
+                                origin = vis_or_col.find("origin")
+                                if origin is not None and i_origin is not None:
+                                    origin.set("xyz", i_origin.get("xyz", "0 0 0"))
+                                    origin.set("rpy", i_origin.get("rpy", "0 0 0"))
+                                    
+                            print(f"Warning: Replaced missing mesh '{link_name}' with primitive box of size {size_str}")
+                            break # Move to next link
+                        else:
+                            # 대체용 전등 파일 경로로 덮어쓰기
+                            fallback_path = os.path.join(root_dir, "indoor_space_urdf_description/meshes/lamp_r50_kitchen_1_1.stl").replace("\\", "/")
+                            mesh.set("filename", fallback_path)
+                            print(f"Warning: Mesh not found, but substituted with fallback '{link_name}': {filepath}")
                     else:
                         print(f"Warning: Mesh not found, removing link '{link.get('name')}': {filepath}")
                         missing_links.add(link.get("name"))
