@@ -1,0 +1,895 @@
+<?xml version="1.0" ?>
+<robot name="indoor_space_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find indoor_space_urdf_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find indoor_space_urdf_description)/urdf/indoor_space_urdf.trans" />
+<xacro:include filename="$(find indoor_space_urdf_description)/urdf/indoor_space_urdf.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="10.000001997999599 9.999998002000401 0.0500000119999976" rpy="0 0 0"/>
+    <mass value="314000.06279999996"/>
+    <inertia ixx="10466934.601009" iyy="10466934.601009" izz="20933345.868228" ixy="6.267445" iyz="0.037642" ixz="-0.037642"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wall_1">
+  <inertial>
+    <origin xyz="-10.176092477059955 9.032534001706706 3.0010787908162007" rpy="0 0 0"/>
+    <mass value="1199320.5194000008"/>
+    <inertia ixx="59948272.483949" iyy="62835949.825753" izz="115555658.483184" ixy="650034.586644" iyz="145160.54241" ixz="10628.149853"/>
+  </inertial>
+  <visual>
+    <origin xyz="-19.99 -0.01 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/wall_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-19.99 -0.01 -0.12" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/wall_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="door_1_1">
+  <inertial>
+    <origin xyz="-1.0235749032651693 -0.024999998557251768 0.0008441608975835457" rpy="0 0 0"/>
+    <mass value="3205.016062208664"/>
+    <inertia ixx="4258.478305" iyy="5378.255115" izz="1121.112861" ixy="2e-06" iyz="-0.0" ixz="2.231359"/>
+  </inertial>
+  <visual>
+    <origin xyz="-5.2 -3.4 -2.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/door_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-5.2 -3.4 -2.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/door_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="door_2_1">
+  <inertial>
+    <origin xyz="-1.0235749032298802 -0.025000000001969447 0.0008441608975839898" rpy="0 0 0"/>
+    <mass value="3205.016062208664"/>
+    <inertia ixx="4258.478305" iyy="5378.255115" izz="1121.112861" ixy="-0.0" iyz="0.0" ixz="2.231359"/>
+  </inertial>
+  <visual>
+    <origin xyz="-15.6 -3.4 -2.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/door_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-15.6 -3.4 -2.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/door_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="latch_1_1">
+  <inertial>
+    <origin xyz="-3.3721778294307616 3.2259975240477434 -0.08000000000000251" rpy="0 0 0"/>
+    <mass value="0.6306919012201485"/>
+    <inertia ixx="0.000176" iyy="0.000295" izz="0.000208" ixy="1.5e-05" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-6.525 -0.15 -1.81" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/latch_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-6.525 -0.15 -1.81" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/latch_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="latch_2_1">
+  <inertial>
+    <origin xyz="-3.372199504232393 13.62599752115827 -0.08000000000000007" rpy="0 0 0"/>
+    <mass value="0.6306919012201485"/>
+    <inertia ixx="0.000176" iyy="0.000295" izz="0.000208" ixy="1.5e-05" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-16.925 10.25 -1.81" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/latch_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-16.925 10.25 -1.81" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/latch_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="door_handle_1_1">
+  <inertial>
+    <origin xyz="0.017402630449727674 0.025000002512597153 0.0008308602208917382" rpy="0 0 0"/>
+    <mass value="7.307515959143933"/>
+    <inertia ixx="0.039295" iyy="0.0191" izz="0.051163" ixy="-0.0" iyz="0.0" ixz="-0.00021"/>
+  </inertial>
+  <visual>
+    <origin xyz="-3.4 -3.35 -1.505" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/door_handle_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-3.4 -3.35 -1.505" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/door_handle_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="toggle_switch_case_living-room_1">
+  <inertial>
+    <origin xyz="-9.999999999999996 -9.991538402818104 -1.899999999999999" rpy="0 0 0"/>
+    <mass value="0.7275630046613618"/>
+    <inertia ixx="0.000782" iyy="0.001223" izz="0.000495" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-21.6 -20.0 -3.2" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_case_living-room_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-21.6 -20.0 -3.2" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_case_living-room_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="toggle_switch_case_corridor_1">
+  <inertial>
+    <origin xyz="-10.008461597172982 -18.99999999999997 -1.5000000000000002" rpy="0 0 0"/>
+    <mass value="0.7275630046613618"/>
+    <inertia ixx="0.001223" iyy="0.000782" izz="0.000495" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-29.8 -20.0 -3.2" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_case_corridor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-29.8 -20.0 -3.2" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_case_corridor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="toggle_switch_H20_corridor-lamp_2_1">
+  <inertial>
+    <origin xyz="1.6434749025571485 -19.74579920115252 0.9399999999999991" rpy="0 0 0"/>
+    <mass value="0.14938002294901867"/>
+    <inertia ixx="4.1e-05" iyy="1.1e-05" izz="4.2e-05" ixy="-4e-06" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-18.14 -20.746 -0.75" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H20_corridor-lamp_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-18.14 -20.746 -0.75" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H20_corridor-lamp_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="door_handle_2_1">
+  <inertial>
+    <origin xyz="0.017402630485022996 0.024999999996564437 0.0008308602208939586" rpy="0 0 0"/>
+    <mass value="7.307515959143933"/>
+    <inertia ixx="0.039295" iyy="0.0191" izz="0.051163" ixy="0.0" iyz="0.0" ixz="-0.00021"/>
+  </inertial>
+  <visual>
+    <origin xyz="-13.8 -3.35 -1.505" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/door_handle_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-13.8 -3.35 -1.505" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/door_handle_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="toggle_switch_H20_corridor-lamp_3_1">
+  <inertial>
+    <origin xyz="1.6434749011488066 -19.745799211849402 0.9599999999999989" rpy="0 0 0"/>
+    <mass value="0.14938002294901867"/>
+    <inertia ixx="4.1e-05" iyy="1.1e-05" izz="4.2e-05" ixy="-4e-06" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-18.14 -20.746 -0.75" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H20_corridor-lamp_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-18.14 -20.746 -0.75" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H20_corridor-lamp_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="toggle_switch_H20_corridor-lamp_4_1">
+  <inertial>
+    <origin xyz="1.6434749011406566 -19.745799211911283 0.9799999999999995" rpy="0 0 0"/>
+    <mass value="0.14938002294901867"/>
+    <inertia ixx="4.1e-05" iyy="1.1e-05" izz="4.2e-05" ixy="-4e-06" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-18.14 -20.746 -0.75" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H20_corridor-lamp_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-18.14 -20.746 -0.75" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H20_corridor-lamp_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="toggle_switch_case_kitchen_1">
+  <inertial>
+    <origin xyz="-9.999999999999998 -10.008461597181888 -1.4999999999999996" rpy="0 0 0"/>
+    <mass value="0.7275630046613618"/>
+    <inertia ixx="0.000782" iyy="0.001223" izz="0.000495" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-13.2 -29.8 -3.2" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_case_kitchen_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-13.2 -29.8 -3.2" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_case_kitchen_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="toggle_switch_H80_kitchen-lamp_1_1">
+  <inertial>
+    <origin xyz="-4.890033711291153e-09 -0.0016076182013726736 0.03999999999999959" rpy="0 0 0"/>
+    <mass value="0.6019954273497765"/>
+    <inertia ixx="0.000341" iyy="0.000466" izz="0.000168" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-3.2 -19.785 -1.66" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H80_kitchen-lamp_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-3.2 -19.785 -1.66" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H80_kitchen-lamp_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="toggle_switch_H40_living-room-lamp_1_1">
+  <inertial>
+    <origin xyz="4.87774975965749e-09 0.0015846135155683783 0.020000000000000018" rpy="0 0 0"/>
+    <mass value="0.30025182441593873"/>
+    <inertia ixx="5e-05" iyy="0.000113" izz="8.4e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-11.6 -10.015 -1.26" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H40_living-room-lamp_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-11.6 -10.015 -1.26" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H40_living-room-lamp_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="toggle_switch_H40_living-room-lamp_2_1">
+  <inertial>
+    <origin xyz="-11.560999995122252 -1.2434153864844308 9.985" rpy="0 0 0"/>
+    <mass value="0.30025182441593873"/>
+    <inertia ixx="5e-05" iyy="0.000113" izz="8.4e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-23.161 -11.26 8.665" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H40_living-room-lamp_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-23.161 -11.26 8.665" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H40_living-room-lamp_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="toggle_switch_H20_corridor-lamp_1_1">
+  <inertial>
+    <origin xyz="-0.001525098867130481 0.00020078802958267694 0.009999999999999565" rpy="0 0 0"/>
+    <mass value="0.14938002294901867"/>
+    <inertia ixx="4.1e-05" iyy="1.1e-05" izz="4.2e-05" ixy="-4e-06" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-19.785 -1.0 -1.66" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H20_corridor-lamp_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-19.785 -1.0 -1.66" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H20_corridor-lamp_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="toggle_switch_case_room_1_1">
+  <inertial>
+    <origin xyz="-11.399999999999997 -9.991538402818101 -1.4999999999999987" rpy="0 0 0"/>
+    <mass value="0.7275630046613618"/>
+    <inertia ixx="0.000782" iyy="0.001223" izz="0.000495" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-23.3 -13.4 -3.2" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_case_room_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-23.3 -13.4 -3.2" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_case_room_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="toggle_switch_H80_room-ramp_1_1">
+  <inertial>
+    <origin xyz="0.00020984142260616068 0.0015938641280772714 0.0400000000000027" rpy="0 0 0"/>
+    <mass value="0.6019954273497765"/>
+    <inertia ixx="0.000343" iyy="0.000464" izz="0.000168" ixy="1.6e-05" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-11.9 -3.415 -1.66" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H80_room-ramp_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-11.9 -3.415 -1.66" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/toggle_switch_H80_room-ramp_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="key_switch_case_room_2_1">
+  <inertial>
+    <origin xyz="-9.990886613284621 -9.999999999999996 -1.5000000000000004" rpy="0 0 0"/>
+    <mass value="0.41723098601592074"/>
+    <inertia ixx="0.00031" iyy="0.00017" izz="0.00017" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-10.2 -16.6 -3.2" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/key_switch_case_room_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-10.2 -16.6 -3.2" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/key_switch_case_room_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="key_switch_room-ramp_2_1">
+  <inertial>
+    <origin xyz="-1.677589149031963 -6.569999999999993 0.1749999999999996" rpy="0 0 0"/>
+    <mass value="0.14606185780383998"/>
+    <inertia ixx="2.9e-05" iyy="1.7e-05" izz="1.7e-05" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-1.9 -13.17 -1.525" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/key_switch_room-ramp_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-1.9 -13.17 -1.525" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/key_switch_room-ramp_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="ceiling_v1_1">
+  <inertial>
+    <origin xyz="-9.520692040965958 10.846154954135994 -0.07470907950506334" rpy="0 0 0"/>
+    <mass value="120861.40669566722"/>
+    <inertia ixx="3379276.913598" iyy="3070041.015945" izz="6444413.027908" ixy="-416369.54261" iyz="13207.228031" ixz="2735.288095"/>
+  </inertial>
+  <visual>
+    <origin xyz="-19.99 -0.01 -6.08" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/ceiling_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-19.99 -0.01 -6.08" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/ceiling_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lamp_50*50_corridor_1_1">
+  <inertial>
+    <origin xyz="4.440892098500626e-15 2.220446049250313e-15 -0.25" rpy="0 0 0"/>
+    <mass value="981.2499999999999"/>
+    <inertia ixx="40.885417" iyy="40.885417" izz="40.885417" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-2.5 -1.5 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_50*50_corridor_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-2.5 -1.5 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_50*50_corridor_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lamp_50*50_corridor_2_1">
+  <inertial>
+    <origin xyz="5.329070518200751e-15 0.0 -0.25" rpy="0 0 0"/>
+    <mass value="981.2499999999999"/>
+    <inertia ixx="40.885417" iyy="40.885417" izz="40.885417" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-10.5 -1.5 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_50*50_corridor_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-10.5 -1.5 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_50*50_corridor_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lamp_50*50_corridor_3_1">
+  <inertial>
+    <origin xyz="3.552713678800501e-15 -4.440892098500626e-15 -0.25" rpy="0 0 0"/>
+    <mass value="981.2499999999999"/>
+    <inertia ixx="40.885417" iyy="40.885417" izz="40.885417" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-18.5 -1.5 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_50*50_corridor_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-18.5 -1.5 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_50*50_corridor_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lamp_50*50_corridor_4_1">
+  <inertial>
+    <origin xyz="3.552713678800501e-15 -2.6645352591003757e-15 -0.25" rpy="0 0 0"/>
+    <mass value="981.2499999999999"/>
+    <inertia ixx="40.885417" iyy="40.885417" izz="40.885417" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-18.5 -5.5 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_50*50_corridor_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-18.5 -5.5 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_50*50_corridor_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lamp_200*200_room_2_1">
+  <inertial>
+    <origin xyz="2.6645352591003757e-15 1.7763568394002505e-15 -0.25" rpy="0 0 0"/>
+    <mass value="15699.999999999998"/>
+    <inertia ixx="5560.416667" iyy="5560.416667" izz="10466.666667" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-5.0 -8.0 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_200*200_room_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-5.0 -8.0 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_200*200_room_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lamp_200*200_room_1_1">
+  <inertial>
+    <origin xyz="5.329070518200751e-15 -2.6645352591003757e-15 -0.25" rpy="0 0 0"/>
+    <mass value="15699.999999999998"/>
+    <inertia ixx="5560.416667" iyy="5560.416667" izz="10466.666667" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-13.0 -8.0 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_200*200_room_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-13.0 -8.0 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_200*200_room_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lamp_100*300_living-room_1_1">
+  <inertial>
+    <origin xyz="0.0 0.0 -0.25" rpy="0 0 0"/>
+    <mass value="11774.999999999998"/>
+    <inertia ixx="9076.5625" iyy="1226.5625" izz="9812.5" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-11.0 -16.0 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_100*300_living-room_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-11.0 -16.0 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_100*300_living-room_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lamp_100*300_living-room_2_1">
+  <inertial>
+    <origin xyz="0.0 0.0 -0.25" rpy="0 0 0"/>
+    <mass value="11774.999999999998"/>
+    <inertia ixx="9076.5625" iyy="1226.5625" izz="9812.5" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-15.0 -16.0 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_100*300_living-room_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-15.0 -16.0 -5.7" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_100*300_living-room_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lamp_r50_kitchen_1_1">
+  <inertial>
+    <origin xyz="1.3322676295501878e-15 1.7763568394002505e-15 -0.41249999999999964" rpy="0 0 0"/>
+    <mass value="3995.1633775701403"/>
+    <inertia ixx="386.906603" iyy="386.906603" izz="407.506665" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-3.0 -15.0 -5.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_r50_kitchen_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-3.0 -15.0 -5.1" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find indoor_space_urdf_description)/meshes/lamp_r50_kitchen_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="강체 1" type="fixed">
+  <origin xyz="19.99 0.01 0.12" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wall_1"/>
+</joint>
+
+<joint name="회전 2" type="revolute">
+  <origin xyz="-14.79 3.39 1.98" rpy="0 0 0"/>
+  <parent link="wall_1"/>
+  <child link="door_1_1"/>
+  <axis xyz="-0.0 0.0 1.0"/>
+  <limit upper="0.0" lower="-2.792527" effort="100" velocity="100"/>
+</joint>
+
+<joint name="회전 3" type="revolute">
+  <origin xyz="-4.39 3.39 1.98" rpy="0 0 0"/>
+  <parent link="wall_1"/>
+  <child link="door_2_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="0.0" lower="-2.007129" effort="100" velocity="100"/>
+</joint>
+
+<joint name="슬라이더 4" type="prismatic">
+  <origin xyz="1.325 -3.25 -0.29" rpy="0 0 0"/>
+  <parent link="door_1_1"/>
+  <child link="latch_1_1"/>
+  <axis xyz="1.0 -0.0 0.0"/>
+  <limit upper="0.04" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="슬라이더 5" type="prismatic">
+  <origin xyz="1.325 -13.65 -0.29" rpy="0 0 0"/>
+  <parent link="door_2_1"/>
+  <child link="latch_2_1"/>
+  <axis xyz="1.0 0.0 -0.0"/>
+  <limit upper="0.04" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="회전 6" type="revolute">
+  <origin xyz="-1.8 -0.05 -0.595" rpy="0 0 0"/>
+  <parent link="door_1_1"/>
+  <child link="door_handle_1_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+  <limit upper="0.785398" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="강체 8" type="fixed">
+  <origin xyz="1.61 19.99 3.08" rpy="0 0 0"/>
+  <parent link="wall_1"/>
+  <child link="toggle_switch_case_living-room_1"/>
+</joint>
+
+<joint name="강체 11" type="fixed">
+  <origin xyz="9.81 19.99 3.08" rpy="0 0 0"/>
+  <parent link="wall_1"/>
+  <child link="toggle_switch_case_corridor_1"/>
+</joint>
+
+<joint name="회전 13" type="revolute">
+  <origin xyz="-11.66 0.746 -2.45" rpy="0 0 0"/>
+  <parent link="toggle_switch_case_corridor_1"/>
+  <child link="toggle_switch_H20_corridor-lamp_2_1"/>
+  <axis xyz="0.0 -0.0 1.0"/>
+  <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
+</joint>
+
+<joint name="회전 14" type="revolute">
+  <origin xyz="-1.8 -0.05 -0.595" rpy="0 0 0"/>
+  <parent link="door_2_1"/>
+  <child link="door_handle_2_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+  <limit upper="0.785398" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="회전 15" type="revolute">
+  <origin xyz="-11.66 0.746 -2.45" rpy="0 0 0"/>
+  <parent link="toggle_switch_case_corridor_1"/>
+  <child link="toggle_switch_H20_corridor-lamp_3_1"/>
+  <axis xyz="0.0 -0.0 1.0"/>
+  <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
+</joint>
+
+<joint name="회전 16" type="revolute">
+  <origin xyz="-11.66 0.746 -2.45" rpy="0 0 0"/>
+  <parent link="toggle_switch_case_corridor_1"/>
+  <child link="toggle_switch_H20_corridor-lamp_4_1"/>
+  <axis xyz="0.0 -0.0 1.0"/>
+  <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
+</joint>
+
+<joint name="강체 17" type="fixed">
+  <origin xyz="-6.79 29.79 3.08" rpy="0 0 0"/>
+  <parent link="wall_1"/>
+  <child link="toggle_switch_case_kitchen_1"/>
+</joint>
+
+<joint name="회전 18" type="revolute">
+  <origin xyz="-10.0 -10.015 -1.54" rpy="0 0 0"/>
+  <parent link="toggle_switch_case_kitchen_1"/>
+  <child link="toggle_switch_H80_kitchen-lamp_1_1"/>
+  <axis xyz="-0.0 -0.0 -1.0"/>
+  <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
+</joint>
+
+<joint name="회전 19" type="revolute">
+  <origin xyz="-10.0 -9.985 -1.94" rpy="0 0 0"/>
+  <parent link="toggle_switch_case_living-room_1"/>
+  <child link="toggle_switch_H40_living-room-lamp_1_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
+</joint>
+
+<joint name="회전 20" type="revolute">
+  <origin xyz="1.561 -8.74 -11.865" rpy="0 0 0"/>
+  <parent link="toggle_switch_case_living-room_1"/>
+  <child link="toggle_switch_H40_living-room-lamp_2_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
+</joint>
+
+<joint name="회전 21" type="revolute">
+  <origin xyz="-10.015 -19.0 -1.54" rpy="0 0 0"/>
+  <parent link="toggle_switch_case_corridor_1"/>
+  <child link="toggle_switch_H20_corridor-lamp_1_1"/>
+  <axis xyz="0.0 -0.0 1.0"/>
+  <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
+</joint>
+
+<joint name="강체 22" type="fixed">
+  <origin xyz="3.31 13.39 3.08" rpy="0 0 0"/>
+  <parent link="wall_1"/>
+  <child link="toggle_switch_case_room_1_1"/>
+</joint>
+
+<joint name="회전 23" type="revolute">
+  <origin xyz="-11.4 -9.985 -1.54" rpy="0 0 0"/>
+  <parent link="toggle_switch_case_room_1_1"/>
+  <child link="toggle_switch_H80_room-ramp_1_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
+</joint>
+
+<joint name="강체 24" type="fixed">
+  <origin xyz="-9.79 16.59 3.08" rpy="0 0 0"/>
+  <parent link="wall_1"/>
+  <child link="key_switch_case_room_2_1"/>
+</joint>
+
+<joint name="슬라이더 25" type="prismatic">
+  <origin xyz="-8.3 -3.43 -1.675" rpy="0 0 0"/>
+  <parent link="key_switch_case_room_2_1"/>
+  <child link="key_switch_room-ramp_2_1"/>
+  <axis xyz="1.0 -0.0 -0.0"/>
+  <limit upper="0.01" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="강체 26" type="fixed">
+  <origin xyz="0.0 0.0 5.96" rpy="0 0 0"/>
+  <parent link="wall_1"/>
+  <child link="ceiling_v1_1"/>
+</joint>
+
+<joint name="강체 27" type="fixed">
+  <origin xyz="-17.49 1.49 -0.38" rpy="0 0 0"/>
+  <parent link="ceiling_v1_1"/>
+  <child link="lamp_50*50_corridor_1_1"/>
+</joint>
+
+<joint name="강체 28" type="fixed">
+  <origin xyz="-9.49 1.49 -0.38" rpy="0 0 0"/>
+  <parent link="ceiling_v1_1"/>
+  <child link="lamp_50*50_corridor_2_1"/>
+</joint>
+
+<joint name="강체 29" type="fixed">
+  <origin xyz="-1.49 1.49 -0.38" rpy="0 0 0"/>
+  <parent link="ceiling_v1_1"/>
+  <child link="lamp_50*50_corridor_3_1"/>
+</joint>
+
+<joint name="강체 30" type="fixed">
+  <origin xyz="-1.49 5.49 -0.38" rpy="0 0 0"/>
+  <parent link="ceiling_v1_1"/>
+  <child link="lamp_50*50_corridor_4_1"/>
+</joint>
+
+<joint name="강체 31" type="fixed">
+  <origin xyz="-14.99 7.99 -0.38" rpy="0 0 0"/>
+  <parent link="ceiling_v1_1"/>
+  <child link="lamp_200*200_room_2_1"/>
+</joint>
+
+<joint name="강체 32" type="fixed">
+  <origin xyz="-6.99 7.99 -0.38" rpy="0 0 0"/>
+  <parent link="ceiling_v1_1"/>
+  <child link="lamp_200*200_room_1_1"/>
+</joint>
+
+<joint name="강체 33" type="fixed">
+  <origin xyz="-8.99 15.99 -0.38" rpy="0 0 0"/>
+  <parent link="ceiling_v1_1"/>
+  <child link="lamp_100*300_living-room_1_1"/>
+</joint>
+
+<joint name="강체 35" type="fixed">
+  <origin xyz="-4.99 15.99 -0.38" rpy="0 0 0"/>
+  <parent link="ceiling_v1_1"/>
+  <child link="lamp_100*300_living-room_2_1"/>
+</joint>
+
+<joint name="강체 36" type="fixed">
+  <origin xyz="-16.99 14.99 -0.98" rpy="0 0 0"/>
+  <parent link="ceiling_v1_1"/>
+  <child link="lamp_r50_kitchen_1_1"/>
+</joint>
+
+</robot>
