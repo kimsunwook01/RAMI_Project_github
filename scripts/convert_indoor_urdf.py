@@ -134,67 +134,83 @@ def main():
             if geom.get("class", "") != "collision":
                 geom.set("group", "3")
 
+    door_bodies = []
+    handle_joints = {}
+    latch_joints = {}
+    latch_bodies = []
+    handle_bodies = []
+
     # Post-process Joints (add damping, frictionloss, springref, limits)
-    for joint in root.findall(".//joint"):
-        if "range" in joint.attrib:
-            joint.set("limited", "true")
+    for body in root.findall(".//body"):
+        bname = body.get("name", "")
+        for joint in body.findall("joint"):
+            jname = joint.get("name", "")
+            if "range" in joint.attrib:
+                joint.set("limited", "true")
             
-        jname = joint.get("name", "")
-        if "door_" in jname and "_joint" in jname and "handle" not in jname:
-            # Main doors (여닫이 문)
-            joint.set("frictionloss", "0.5")
-            joint.set("damping", "2.0")
-        elif "door_handle" in jname:
-            # Door handles (스프링 복원력 추가)
-            joint.set("frictionloss", "0.1")
-            joint.set("damping", "0.5")
-            joint.set("stiffness", "50.0")
-            joint.set("springref", "0")
-        elif "latch" in jname:
-            # Latches (스프링 탄성으로 항상 튀어나오게 설정)
-            joint.set("frictionloss", "0.5")
-            joint.set("damping", "1.0")
-            joint.set("stiffness", "50.0")
-            joint.set("springref", "0")
-        elif "toggle_switch" in jname:
-            # Toggle switches
-            joint.set("frictionloss", "0.2")
-            joint.set("damping", "0.1")
-            # 스위치가 벽을 뚫고 거대한 원을 그리며 회전하는 문제(원거리 Pivot) 해결
-            # 관성 중심(COM)을 조인트 회전축의 중심(pos)으로 설정하여 제자리에서 회전하도록 함
-            parent_body = None
-            for body in root.findall(".//body"):
-                for j in body.findall("joint"):
-                    if j.get("name") == jname:
-                        parent_body = body
+            if "door_" in jname and "_joint" in jname and "handle" not in jname:
+                # Main doors (여닫이 문)
+                joint.set("frictionloss", "0.5")
+                joint.set("damping", "2.0")
+                door_bodies.append(bname)
+            elif "door_handle" in jname:
+                # Door handles (스프링 복원력 추가)
+                joint.set("frictionloss", "0.1")
+                joint.set("damping", "0.5")
+                joint.set("stiffness", "50.0")
+                joint.set("springref", "0")
+                # extract base door name (e.g. door_1_1)
+                base_door = bname.replace("door_handle_", "door_")
+                handle_joints[base_door] = jname
+                handle_bodies.append(bname)
+            elif "latch" in jname:
+                # Latches (스프링 탄성으로 항상 튀어나오게 설정)
+                joint.set("frictionloss", "0.5")
+                joint.set("damping", "1.0")
+                joint.set("stiffness", "50.0")
+                joint.set("springref", "0")
+                base_door = bname.replace("latch_", "door_")
+                latch_joints[base_door] = jname
+                latch_bodies.append(bname)
+            elif "toggle_switch" in jname:
+                # Toggle switches
+                joint.set("frictionloss", "0.2")
+                joint.set("damping", "0.1")
+                # 스위치가 벽을 뚫고 거대한 원을 그리며 회전하는 문제(원거리 Pivot) 해결
+                # 관성 중심(COM)을 조인트 회전축의 중심(pos)으로 설정하여 제자리에서 회전하도록 함
+                parent_body = None
+                for body2 in root.findall(".//body"):
+                    for j in body2.findall("joint"):
+                        if j.get("name") == jname:
+                            parent_body = body2
+                            break
+                    if parent_body is not None:
                         break
+                
                 if parent_body is not None:
-                    break
-            
-            if parent_body is not None:
-                inertial = parent_body.find("inertial")
-                if inertial is not None:
-                    joint.set("pos", inertial.get("pos", "0 0 0"))
-        elif "key_switch" in jname:
-            # Key switches
-            joint.set("frictionloss", "0.2")
-            joint.set("damping", "0.5")
-            joint.set("stiffness", "10.0")
-            joint.set("springref", "0")
-            
-            parent_body = None
-            for body in root.findall(".//body"):
-                for j in body.findall("joint"):
-                    if j.get("name") == jname:
-                        parent_body = body
+                    inertial = parent_body.find("inertial")
+                    if inertial is not None:
+                        joint.set("pos", inertial.get("pos", "0 0 0"))
+            elif "key_switch" in jname:
+                # Key switches
+                joint.set("frictionloss", "0.2")
+                joint.set("damping", "0.5")
+                joint.set("stiffness", "10.0")
+                joint.set("springref", "0")
+                
+                parent_body = None
+                for body2 in root.findall(".//body"):
+                    for j in body2.findall("joint"):
+                        if j.get("name") == jname:
+                            parent_body = body2
+                            break
+                    if parent_body is not None:
                         break
+                        
                 if parent_body is not None:
-                    break
-                    
-            if parent_body is not None:
-                inertial = parent_body.find("inertial")
-                if inertial is not None:
-                    joint.set("pos", inertial.get("pos", "0 0 0"))
+                    inertial = parent_body.find("inertial")
+                    if inertial is not None:
+                        joint.set("pos", inertial.get("pos", "0 0 0"))
 
     # 6. Apply Materials and Colors
     asset = root.find("asset")
@@ -442,10 +458,48 @@ def main():
         json.dump({"switches": switch_mappings}, f, indent=4, ensure_ascii=False)
     print(f"Created metadata mapping at: {json_path}")
 
-    # Add <contact> section to disable collisions between switches and the wall/cases
+    # Add <contact> section to disable collisions
     contact = ET.SubElement(root, "contact")
     for t in toggles_list:
         ET.SubElement(contact, "exclude", {"body1": t["name"], "body2": "world"})
+        
+    for lb in latch_bodies:
+        # Exclude latch from its handle to prevent internal jamming
+        # Since latch and handle belong to the same door, they are siblings or cousins
+        for hb in handle_bodies:
+            if lb.replace("latch", "") == hb.replace("door_handle", ""):
+                ET.SubElement(contact, "exclude", {"body1": lb, "body2": hb})
+                
+    # Add <equality> section to couple door handles and latches
+    equality = ET.SubElement(root, "equality")
+    for base_door in handle_joints:
+        if base_door in latch_joints:
+            h_j = handle_joints[base_door]
+            l_j = latch_joints[base_door]
+            # Handle rotates 0.785 rad, Latch translates 0.04m -> polycoef = [0, -0.04/0.785, 0, 0, 0] = [0, -0.0509, 0, 0, 0]
+            ET.SubElement(equality, "joint", {
+                "joint1": l_j, 
+                "joint2": h_j, 
+                "polycoef": "0 -0.051 0 0 0"
+            })
+            
+    # Add <actuator> section for toggle switch bistable snaps
+    actuator = root.find("actuator")
+    if actuator is None:
+        actuator = ET.SubElement(root, "actuator")
+        
+    for t in toggles_list:
+        # Add negative stiffness via affine bias.
+        # biasprm="0 K 0", where K > 0 creates a force in the direction of displacement.
+        # gainprm="0" disables the control input from having any effect.
+        # We need the joint name. Toggle switches usually have "_joint" appended to body name.
+        t_joint = t["name"] + "_joint"
+        ET.SubElement(actuator, "general", {
+            "joint": t_joint,
+            "biastype": "affine",
+            "gainprm": "0",
+            "biasprm": "0 10.0 0"
+        })
 
     tree.write(out_mjcf_path, encoding="utf-8", xml_declaration=True)
 
