@@ -676,13 +676,13 @@
   </collision>
 </link>
 
-<joint name="강체 1" type="fixed">
+<joint name="wall_1_joint" type="fixed">
   <origin xyz="19.99 0.01 0.12" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wall_1"/>
 </joint>
 
-<joint name="회전 2" type="revolute">
+<joint name="door_1_1_joint" type="revolute">
   <origin xyz="-14.79 3.39 1.98" rpy="0 0 0"/>
   <parent link="wall_1"/>
   <child link="door_1_1"/>
@@ -690,7 +690,7 @@
   <limit upper="0.0" lower="-2.792527" effort="100" velocity="100"/>
 </joint>
 
-<joint name="회전 3" type="revolute">
+<joint name="door_2_1_joint" type="revolute">
   <origin xyz="-4.39 3.39 1.98" rpy="0 0 0"/>
   <parent link="wall_1"/>
   <child link="door_2_1"/>
@@ -698,7 +698,7 @@
   <limit upper="0.0" lower="-2.007129" effort="100" velocity="100"/>
 </joint>
 
-<joint name="슬라이더 4" type="prismatic">
+<joint name="latch_1_1_joint" type="prismatic">
   <origin xyz="1.325 -3.25 -0.29" rpy="0 0 0"/>
   <parent link="door_1_1"/>
   <child link="latch_1_1"/>
@@ -706,7 +706,7 @@
   <limit upper="0.04" lower="0.0" effort="100" velocity="100"/>
 </joint>
 
-<joint name="슬라이더 5" type="prismatic">
+<joint name="latch_2_1_joint" type="prismatic">
   <origin xyz="1.325 -13.65 -0.29" rpy="0 0 0"/>
   <parent link="door_2_1"/>
   <child link="latch_2_1"/>
@@ -714,7 +714,7 @@
   <limit upper="0.04" lower="0.0" effort="100" velocity="100"/>
 </joint>
 
-<joint name="회전 6" type="revolute">
+<joint name="door_handle_1_1_joint" type="revolute">
   <origin xyz="-1.8 -0.05 -0.595" rpy="0 0 0"/>
   <parent link="door_1_1"/>
   <child link="door_handle_1_1"/>
@@ -722,19 +722,19 @@
   <limit upper="0.785398" lower="0.0" effort="100" velocity="100"/>
 </joint>
 
-<joint name="강체 8" type="fixed">
+<joint name="toggle_switch_case_living-room_1_joint" type="fixed">
   <origin xyz="1.61 19.99 3.08" rpy="0 0 0"/>
   <parent link="wall_1"/>
   <child link="toggle_switch_case_living-room_1"/>
 </joint>
 
-<joint name="강체 11" type="fixed">
+<joint name="toggle_switch_case_corridor_1_joint" type="fixed">
   <origin xyz="9.81 19.99 3.08" rpy="0 0 0"/>
   <parent link="wall_1"/>
   <child link="toggle_switch_case_corridor_1"/>
 </joint>
 
-<joint name="회전 13" type="revolute">
+<joint name="toggle_switch_H20_corridor-lamp_2_1_joint" type="revolute">
   <origin xyz="-11.66 0.746 -2.45" rpy="0 0 0"/>
   <parent link="toggle_switch_case_corridor_1"/>
   <child link="toggle_switch_H20_corridor-lamp_2_1"/>
@@ -742,7 +742,7 @@
   <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
 </joint>
 
-<joint name="회전 14" type="revolute">
+<joint name="door_handle_2_1_joint" type="revolute">
   <origin xyz="-1.8 -0.05 -0.595" rpy="0 0 0"/>
   <parent link="door_2_1"/>
   <child link="door_handle_2_1"/>
@@ -750,7 +750,7 @@
   <limit upper="0.785398" lower="0.0" effort="100" velocity="100"/>
 </joint>
 
-<joint name="회전 15" type="revolute">
+<joint name="toggle_switch_H20_corridor-lamp_3_1_joint" type="revolute">
   <origin xyz="-11.66 0.746 -2.45" rpy="0 0 0"/>
   <parent link="toggle_switch_case_corridor_1"/>
   <child link="toggle_switch_H20_corridor-lamp_3_1"/>
@@ -758,7 +758,7 @@
   <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
 </joint>
 
-<joint name="회전 16" type="revolute">
+<joint name="toggle_switch_H20_corridor-lamp_4_1_joint" type="revolute">
   <origin xyz="-11.66 0.746 -2.45" rpy="0 0 0"/>
   <parent link="toggle_switch_case_corridor_1"/>
   <child link="toggle_switch_H20_corridor-lamp_4_1"/>
@@ -766,13 +766,13 @@
   <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
 </joint>
 
-<joint name="강체 17" type="fixed">
+<joint name="toggle_switch_case_kitchen_1_joint" type="fixed">
   <origin xyz="-6.79 29.79 3.08" rpy="0 0 0"/>
   <parent link="wall_1"/>
   <child link="toggle_switch_case_kitchen_1"/>
 </joint>
 
-<joint name="회전 18" type="revolute">
+<joint name="toggle_switch_H80_kitchen-lamp_1_1_joint" type="revolute">
   <origin xyz="-10.0 -10.015 -1.54" rpy="0 0 0"/>
   <parent link="toggle_switch_case_kitchen_1"/>
   <child link="toggle_switch_H80_kitchen-lamp_1_1"/>
@@ -780,7 +780,7 @@
   <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
 </joint>
 
-<joint name="회전 19" type="revolute">
+<joint name="toggle_switch_H40_living-room-lamp_1_1_joint" type="revolute">
   <origin xyz="-10.0 -9.985 -1.94" rpy="0 0 0"/>
   <parent link="toggle_switch_case_living-room_1"/>
   <child link="toggle_switch_H40_living-room-lamp_1_1"/>
@@ -788,7 +788,7 @@
   <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
 </joint>
 
-<joint name="회전 20" type="revolute">
+<joint name="toggle_switch_H40_living-room-lamp_2_1_joint" type="revolute">
   <origin xyz="1.561 -8.74 -11.865" rpy="0 0 0"/>
   <parent link="toggle_switch_case_living-room_1"/>
   <child link="toggle_switch_H40_living-room-lamp_2_1"/>
@@ -796,7 +796,7 @@
   <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
 </joint>
 
-<joint name="회전 21" type="revolute">
+<joint name="toggle_switch_H20_corridor-lamp_1_1_joint" type="revolute">
   <origin xyz="-10.015 -19.0 -1.54" rpy="0 0 0"/>
   <parent link="toggle_switch_case_corridor_1"/>
   <child link="toggle_switch_H20_corridor-lamp_1_1"/>
@@ -804,13 +804,13 @@
   <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
 </joint>
 
-<joint name="강체 22" type="fixed">
+<joint name="toggle_switch_case_room_1_1_joint" type="fixed">
   <origin xyz="3.31 13.39 3.08" rpy="0 0 0"/>
   <parent link="wall_1"/>
   <child link="toggle_switch_case_room_1_1"/>
 </joint>
 
-<joint name="회전 23" type="revolute">
+<joint name="toggle_switch_H80_room-ramp_1_1_joint" type="revolute">
   <origin xyz="-11.4 -9.985 -1.54" rpy="0 0 0"/>
   <parent link="toggle_switch_case_room_1_1"/>
   <child link="toggle_switch_H80_room-ramp_1_1"/>
@@ -818,13 +818,13 @@
   <limit upper="0.1309" lower="-0.1309" effort="100" velocity="100"/>
 </joint>
 
-<joint name="강체 24" type="fixed">
+<joint name="key_switch_case_room_2_1_joint" type="fixed">
   <origin xyz="-9.79 16.59 3.08" rpy="0 0 0"/>
   <parent link="wall_1"/>
   <child link="key_switch_case_room_2_1"/>
 </joint>
 
-<joint name="슬라이더 25" type="prismatic">
+<joint name="key_switch_room-ramp_2_1_joint" type="prismatic">
   <origin xyz="-8.3 -3.43 -1.675" rpy="0 0 0"/>
   <parent link="key_switch_case_room_2_1"/>
   <child link="key_switch_room-ramp_2_1"/>
@@ -832,61 +832,61 @@
   <limit upper="0.01" lower="0.0" effort="100" velocity="100"/>
 </joint>
 
-<joint name="강체 26" type="fixed">
+<joint name="ceiling_v1_1_joint" type="fixed">
   <origin xyz="0.0 0.0 5.96" rpy="0 0 0"/>
   <parent link="wall_1"/>
   <child link="ceiling_v1_1"/>
 </joint>
 
-<joint name="강체 27" type="fixed">
+<joint name="lamp_50*50_corridor_1_1_joint" type="fixed">
   <origin xyz="-17.49 1.49 -0.38" rpy="0 0 0"/>
   <parent link="ceiling_v1_1"/>
   <child link="lamp_50*50_corridor_1_1"/>
 </joint>
 
-<joint name="강체 28" type="fixed">
+<joint name="lamp_50*50_corridor_2_1_joint" type="fixed">
   <origin xyz="-9.49 1.49 -0.38" rpy="0 0 0"/>
   <parent link="ceiling_v1_1"/>
   <child link="lamp_50*50_corridor_2_1"/>
 </joint>
 
-<joint name="강체 29" type="fixed">
+<joint name="lamp_50*50_corridor_3_1_joint" type="fixed">
   <origin xyz="-1.49 1.49 -0.38" rpy="0 0 0"/>
   <parent link="ceiling_v1_1"/>
   <child link="lamp_50*50_corridor_3_1"/>
 </joint>
 
-<joint name="강체 30" type="fixed">
+<joint name="lamp_50*50_corridor_4_1_joint" type="fixed">
   <origin xyz="-1.49 5.49 -0.38" rpy="0 0 0"/>
   <parent link="ceiling_v1_1"/>
   <child link="lamp_50*50_corridor_4_1"/>
 </joint>
 
-<joint name="강체 31" type="fixed">
+<joint name="lamp_200*200_room_2_1_joint" type="fixed">
   <origin xyz="-14.99 7.99 -0.38" rpy="0 0 0"/>
   <parent link="ceiling_v1_1"/>
   <child link="lamp_200*200_room_2_1"/>
 </joint>
 
-<joint name="강체 32" type="fixed">
+<joint name="lamp_200*200_room_1_1_joint" type="fixed">
   <origin xyz="-6.99 7.99 -0.38" rpy="0 0 0"/>
   <parent link="ceiling_v1_1"/>
   <child link="lamp_200*200_room_1_1"/>
 </joint>
 
-<joint name="강체 33" type="fixed">
+<joint name="lamp_100*300_living-room_1_1_joint" type="fixed">
   <origin xyz="-8.99 15.99 -0.38" rpy="0 0 0"/>
   <parent link="ceiling_v1_1"/>
   <child link="lamp_100*300_living-room_1_1"/>
 </joint>
 
-<joint name="강체 35" type="fixed">
+<joint name="lamp_100*300_living-room_2_1_joint" type="fixed">
   <origin xyz="-4.99 15.99 -0.38" rpy="0 0 0"/>
   <parent link="ceiling_v1_1"/>
   <child link="lamp_100*300_living-room_2_1"/>
 </joint>
 
-<joint name="강체 36" type="fixed">
+<joint name="lamp_r50_kitchen_1_1_joint" type="fixed">
   <origin xyz="-16.99 14.99 -0.98" rpy="0 0 0"/>
   <parent link="ceiling_v1_1"/>
   <child link="lamp_r50_kitchen_1_1"/>
