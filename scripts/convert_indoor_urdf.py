@@ -136,6 +136,9 @@ def main():
 
     # Post-process Joints (add damping, frictionloss, springref, limits)
     for joint in root.findall(".//joint"):
+        if "range" in joint.attrib:
+            joint.set("limited", "true")
+            
         jname = joint.get("name", "")
         if "door_" in jname and "_joint" in jname and "handle" not in jname:
             # Main doors (여닫이 문)
@@ -325,13 +328,13 @@ def main():
             lamp_id += 1
 
     # 2. Add QR markers for switches & Build JSON mapping
-    # Group toggles into switch cases based on X,Y proximity
     import qrcode
     from collections import defaultdict
     import math
-    
+
     switch_groups = []
-    
+    toggles_list = []
+    switch_mappings = []
     for body in worldbody.findall(".//body"):
         bname = body.get("name", "")
         if "switch" in bname and "case" not in bname:
@@ -374,18 +377,20 @@ def main():
                     found_group["max_z"]
                 )
             else:
-                switch_groups.append({
+                new_group = {
                     "id": f"switch_case_{len(switch_groups)+1}",
                     "toggles": [bname],
                     "rooms": [room],
                     "avg_pos": global_pos,
                     "max_z": global_pos[2]
-                })
+                }
+                switch_groups.append(new_group)
+                found_group = new_group
+            
+            toggles_list.append({"name": bname, "case_id": found_group["id"]})
 
     qr_dir = os.path.join(root_dir, "indoor_space_urdf_description/meshes/qr_codes")
     os.makedirs(qr_dir, exist_ok=True)
-    
-    switch_mappings = []
     
     for i, group in enumerate(switch_groups):
         case_id = group["id"]
@@ -436,6 +441,11 @@ def main():
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump({"switches": switch_mappings}, f, indent=4, ensure_ascii=False)
     print(f"Created metadata mapping at: {json_path}")
+
+    # Add <contact> section to disable collisions between switches and the wall/cases
+    contact = ET.SubElement(root, "contact")
+    for t in toggles_list:
+        ET.SubElement(contact, "exclude", {"body1": t["name"], "body2": "world"})
 
     tree.write(out_mjcf_path, encoding="utf-8", xml_declaration=True)
 

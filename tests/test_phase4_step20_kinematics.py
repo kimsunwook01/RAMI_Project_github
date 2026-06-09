@@ -38,19 +38,19 @@ def main():
         while viewer.is_running():
             t += 0.02
             
-            for jname in test_joints:
-                jid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, jname)
-                qpos_idx = model.jnt_qposadr[jid]
-                
-                # 조인트 리미트 정보 가져오기
-                if model.jnt_limited[jid]:
-                    jmin, jmax = model.jnt_range[jid]
-                    mid = (jmin + jmax) / 2.0
-                    amp = (jmax - jmin) / 2.0
-                    
-                    # 3초 주기로 사인파 형태로 움직임
-                    target_pos = mid + amp * math.sin(t)
-                    data.qpos[qpos_idx] = target_pos
+            # for jname in test_joints:
+            #     jid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, jname)
+            #     qpos_idx = model.jnt_qposadr[jid]
+            #     
+            #     # 조인트 리미트 정보 가져오기
+            #     if model.jnt_limited[jid]:
+            #         jmin, jmax = model.jnt_range[jid]
+            #         mid = (jmin + jmax) / 2.0
+            #         amp = (jmax - jmin) / 2.0
+            #         
+            #         # 3초 주기로 사인파 형태로 움직임
+            #         target_pos = mid + amp * math.sin(t)
+            #         data.qpos[qpos_idx] = target_pos
                     
             mujoco.mj_step(model, data)
             viewer.sync()
