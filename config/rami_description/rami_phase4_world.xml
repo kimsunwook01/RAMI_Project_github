@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<mujoco model="rami_phase4_standalone">
+<mujoco model="rami_phase4_world">
   <compiler angle="radian" />
+  <include file="rami_world.xml" />
   <include file="../indoor_description/indoor_world.xml" />
   
   <worldbody>

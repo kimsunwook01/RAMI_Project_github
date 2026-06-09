@@ -6,10 +6,11 @@ def main():
     rami_world_path = os.path.join(root_dir, "config/rami_description/rami_world.xml")
     phase4_world_path = os.path.join(root_dir, "config/rami_description/rami_phase4_world.xml")
 
-    # 1. Generate standalone phase4 world (No robot, just indoor space)
+    # 1. Generate standalone phase4 world (Robot + Indoor Space)
     standalone_xml = f"""<?xml version='1.0' encoding='utf-8'?>
-<mujoco model="rami_phase4_standalone">
+<mujoco model="rami_phase4_world">
   <compiler angle="radian" />
+  <include file="rami_world.xml" />
   <include file="../indoor_description/indoor_world.xml" />
   
   <worldbody>

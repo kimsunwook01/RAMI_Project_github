@@ -43,31 +43,15 @@
         <geom type="sphere" size="0.05" rgba="1 0 0 0.5" contype="0" conaffinity="0" group="1"/>
     </body>
     <light pos="0 0 3" dir="0 0 -1" directional="true" castshadow="false" />
-    <!-- 바닥 넓이를 2배로 확장 (size 5 -> 10) -->
-    <geom name="floor" type="plane" size="10 10 0.05" rgba="0.8 0.9 0.8 1" />
-    
-    <!-- Test 18-1: 로봇 정면(Y축 음수 방향) 5m 거리에 임의의 객체 2개 생성 -->
-    <!-- 참고: YOLOv8이 원색 기본 도형을 특정 객체(예: 스포츠 공, 물병, 박스 등)로 인식하는지 테스트합니다. -->
-    <body name="test_object_cylinder" pos="0 -5 0.5">
-        <freejoint />
-        <geom type="cylinder" size="0.25 0.5" rgba="0.8 0.2 0.2 1" />
-    </body>
-    <body name="test_object_box" pos="0.8 -5 0.4">
-        <freejoint />
-        <geom type="box" size="0.4 0.4 0.4" rgba="0.2 0.4 0.8 1" />
-    </body>
-    
-    <!-- Test 18-2: 로봇 정면 1m (Y=-1), 그리퍼 카메라 높이 근처에 떠 있는 작은 초록 공 -->
-    <body name="test_object_sphere" pos="0 -1.0 0.88">
-        <!-- freejoint가 없으므로 공중에 고정됨 -->
-        <geom type="sphere" size="0.08" rgba="0.1 0.9 0.1 1" />
-    </body>
-    <body name="base_link" pos="0 0 -0.015">
+
+    <body name="base_link" pos="0 0 0.085">
       <inertial pos="0 0 0.264356" mass="109.995" diaginertia="12.2755 12.1424 1.27632" />
       <joint name="root_x" type="slide" axis="1 0 0" damping="2" frictionloss="0.5" />
       <joint name="root_y" type="slide" axis="0 1 0" damping="2" frictionloss="0.5" />
       <joint name="root_z_rot" type="hinge" axis="0 0 1" damping="2" frictionloss="0.5" />
-      <geom type="mesh" mesh="base_link" contype="1" conaffinity="1" />
+      <geom type="mesh" mesh="base_link" contype="0" conaffinity="0" />
+      <!-- SLAM 벽면 충돌을 위한 베이스 프록시 (바닥과 닿지 않도록 Z 위치를 높임) -->
+      <geom type="cylinder" size="0.25 0.3" pos="0 0 0.4" contype="1" conaffinity="1" rgba="0 1 0 0.0" group="3" />
       <geom type="mesh" mesh="pillar_link_1" contype="2" conaffinity="2" />
       <geom type="mesh" mesh="depth_camera_1" contype="0" conaffinity="0" />
       <geom type="mesh" mesh="ultrasonic_sensor_1_1" contype="0" conaffinity="0" />
@@ -133,7 +117,7 @@
       <body name="lift_slide_link_1" pos="0 -0.02 0.865">
         <inertial pos="0 0.02 0" quat="0.5 0.5 -0.5 0.5" mass="1.6139" diaginertia="0.001693 0.001331 0.001331" />
         <joint name="lift_slide_joint" pos="0 0 0" axis="0 0 1" type="slide" range="-0.62 0.62" actuatorfrcrange="-10000 10000" damping="2000" frictionloss="20" />
-        <geom pos="0 0.02 -0.865" quat="1 0 0 0" type="mesh" mesh="lift_slide_link_1" />
+        <geom pos="0 0.02 -0.865" quat="1 0 0 0" type="mesh" mesh="lift_slide_link_1" contype="0" conaffinity="0" />
         <body name="rotation_link_1" pos="0 0.02 0.03">
           <inertial pos="0 -0.0110341 -0.03" quat="0.5 0.5 -0.5 0.5" mass="4.89403" diaginertia="0.017752 0.012634 0.008358" />
           <joint name="rotation_joint" pos="0 0 0" axis="0 0 1" range="-3.14159 3.14159" actuatorfrcrange="-1000 1000" damping="50" frictionloss="10" />
@@ -161,7 +145,7 @@
                     <geom pos="0 0.6 -0.865" quat="1 0 0 0" type="mesh" mesh="gripper_camera_1" />
                     
                     <camera name="gripper_camera" pos="0 -0.015 0.05" xyaxes="-1 0 0 0 0 1" fovy="60" />
-                    <geom name="gripper_cam_vis" type="mesh" mesh="visual_pyramid_gripper" pos="0 -0.015 0.05" xyaxes="-1 0 0 0 0 1" material="vis_camera" contype="0" conaffinity="0" group="5" />
+                    <geom name="gripper_cam_vis" type="mesh" mesh="visual_pyramid_gripper" pos="0 -0.015 0.05" xyaxes="-1 0 0 0 0 1" material="vis_camera" contype="0" conaffinity="0" group="2" />
                     
                     <body name="arm_link_6_1" pos="-0.005 -0.03 -0.015">
                       <inertial pos="0.005 -0.0180282 0.00316455" quat="0.534551 0.462877 -0.462877 0.534551" mass="0.44765" diaginertia="0.0002929 0.000233 0.0001021" />
