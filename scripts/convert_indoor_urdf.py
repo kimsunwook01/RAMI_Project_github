@@ -245,7 +245,8 @@ def main():
             rgba = "0.7 0.5 0.3 1" # 밝은 갈색
         elif "handle" in ident or "latch" in ident or "switch" in ident:
             rgba = "0.6 0.6 0.6 1" # 회색
-        elif "lamp" in ident:
+        elif "lamp" in ident or geom_type in ["box", "cylinder"] and not ident:
+            # If we don't have an ident but it's a primitive, it must be the lamp!
             material = "mat_lamp"
             
         if rgba or material:
@@ -324,26 +325,27 @@ def main():
             lamp_id += 1
 
     # 2. Add QR markers for switches & Build JSON mapping
-    switch_mappings = []
+    # Group toggles into switch cases based on X,Y proximity
+    import qrcode
+    from collections import defaultdict
+    import math
+    
+    switch_groups = []
     
     for body in worldbody.findall(".//body"):
         bname = body.get("name", "")
         if "switch" in bname and "case" not in bname:
-            pos = body.get("pos", "0 0 0")
-            px, py, pz = map(float, pos.split())
-            # Place QR code 6cm above the switch toggle (approx 5mm above the case plate)
-            qr_pos = f"{px} {py} {pz + 0.06}"
+            b_pos = body.get("pos", "0 0 0")
+            bx, by, bz = map(float, b_pos.split())
             
-            qr_name = f"qr_{bname}"
-            # 40x40mm cube sticking out of wall
-            ET.SubElement(worldbody, "geom", {
-                "name": qr_name,
-                "type": "box",
-                "size": "0.02 0.02 0.02",
-                "pos": qr_pos,
-                "material": "mat_qr"
-            })
-            
+            inertial = body.find("inertial")
+            if inertial is not None:
+                i_pos = inertial.get("pos", "0 0 0")
+                ix, iy, iz = map(float, i_pos.split())
+                global_pos = (bx + ix, by + iy, bz + iz)
+            else:
+                global_pos = (bx, by, bz)
+                
             # Simple mapping logic: extract room name
             room = "unknown"
             if "living-room" in bname: room = "living-room"
@@ -351,10 +353,79 @@ def main():
             elif "kitchen" in bname: room = "kitchen"
             elif "room" in bname: room = "room"
             
+            # Find an existing group
+            found_group = None
+            for g in switch_groups:
+                gx, gy, gz = g["avg_pos"]
+                if math.hypot(global_pos[0] - gx, global_pos[1] - gy) < 0.2:
+                    found_group = g
+                    break
+                    
+            if found_group:
+                found_group["toggles"].append(bname)
+                found_group["rooms"].append(room)
+                # Update max Z
+                found_group["max_z"] = max(found_group["max_z"], global_pos[2])
+                # Update avg X, Y
+                n = len(found_group["toggles"])
+                found_group["avg_pos"] = (
+                    (found_group["avg_pos"][0] * (n-1) + global_pos[0]) / n,
+                    (found_group["avg_pos"][1] * (n-1) + global_pos[1]) / n,
+                    found_group["max_z"]
+                )
+            else:
+                switch_groups.append({
+                    "id": f"switch_case_{len(switch_groups)+1}",
+                    "toggles": [bname],
+                    "rooms": [room],
+                    "avg_pos": global_pos,
+                    "max_z": global_pos[2]
+                })
+
+    qr_dir = os.path.join(root_dir, "indoor_space_urdf_description/meshes/qr_codes")
+    os.makedirs(qr_dir, exist_ok=True)
+    
+    switch_mappings = []
+    
+    for i, group in enumerate(switch_groups):
+        case_id = group["id"]
+        qr_name = f"qr_{case_id}"
+        
+        # 10cm above the highest toggle
+        gx, gy, gz = group["avg_pos"]
+        qr_pos = f"{gx} {gy} {group['max_z'] + 0.10}"
+        
+        # Generate real QR code image
+        qr_data = case_id
+        qr = qrcode.QRCode(version=1, box_size=10, border=2)
+        qr.add_data(qr_data)
+        qr.make(fit=True)
+        img = qr.make_image(fill_color="black", back_color="white")
+        img_path = os.path.join(qr_dir, f"{case_id}.png")
+        img.save(img_path)
+        
+        # Add texture and material to asset
+        tex_name = f"tex_{qr_name}"
+        mat_name = f"mat_{qr_name}"
+        ET.SubElement(asset, "texture", {"name": tex_name, "type": "2d", "file": img_path.replace("\\", "/")})
+        ET.SubElement(asset, "material", {"name": mat_name, "texture": tex_name, "emission": "0.5"})
+        
+        # Add geom
+        ET.SubElement(worldbody, "geom", {
+            "name": qr_name,
+            "type": "box",
+            "size": "0.02 0.02 0.02",
+            "pos": qr_pos,
+            "material": mat_name
+        })
+        
+        # Map all toggles in this case
+        for toggle, room in zip(group["toggles"], group["rooms"]):
             switch_mappings.append({
-                "switch_id": bname,
+                "switch_id": toggle,
                 "target_room": room,
-                "qr_code_id": qr_name
+                "qr_code_id": qr_name,
+                "switch_case_id": case_id
             })
             
     # Write JSON metadata
