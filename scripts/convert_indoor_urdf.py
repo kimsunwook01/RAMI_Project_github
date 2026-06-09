@@ -190,6 +190,104 @@ def main():
                 if inertial is not None:
                     joint.set("pos", inertial.get("pos", "0 0 0"))
 
+    # 6. Apply Materials and Colors
+    asset = root.find("asset")
+    if asset is None:
+        asset = ET.SubElement(root, "asset")
+    
+    # Add a wooden floor texture (checkerboard of two dark wood colors)
+    ET.SubElement(asset, "texture", {"name": "tex_wood", "type": "2d", "builtin": "checker", 
+                                     "rgb1": "0.3 0.15 0.05", "rgb2": "0.2 0.1 0.02", 
+                                     "width": "512", "height": "512", 
+                                     "mark": "edge", "markrgb": "0.1 0.05 0.01"})
+    ET.SubElement(asset, "material", {"name": "mat_wood", "texture": "tex_wood", 
+                                      "texrepeat": "20 20", "reflectance": "0.1"})
+                                      
+    # Add a glowing material for lamps
+    ET.SubElement(asset, "material", {"name": "mat_lamp", "rgba": "0.95 0.95 0.5 1", "emission": "1.0"})
+
+    # Iterate over all geoms. For flattened bodies, the name is lost but mesh attribute remains.
+    for geom in root.findall(".//geom"):
+        mesh_name = geom.get("mesh", "").lower()
+        geom_type = geom.get("type", "")
+        
+        # Determine the identifier string (either the mesh name, or the parent body name)
+        # ElementTree doesn't easily give parent, but we can search for bodies and map them.
+        # Actually, if we just look at mesh_name, it covers 90% of objects.
+        # The only objects without mesh_name are the lamp boxes.
+        ident = mesh_name
+        if not ident and geom_type == "box":
+            ident = "lamp" # Because we only added boxes for missing lamps!
+            
+        # For geoms that are inside a body, we can also check the body name.
+        # But we don't have parent links. Let's just do a second pass for bodies.
+        
+        rgba = None
+        emission = None
+        material = None
+        
+        if "wall" in ident:
+            rgba = "0.85 0.85 0.85 1" # 밝은 회색
+        elif "ceiling" in ident:
+            rgba = "0.85 0.85 0.85 1" # 밝은 회색
+        elif "base_link" in ident or "floor" in ident:
+            material = "mat_wood"
+        elif "door" in ident and "handle" not in ident and "latch" not in ident:
+            rgba = "0.7 0.5 0.3 1" # 밝은 갈색
+        elif "handle" in ident or "latch" in ident or "switch" in ident:
+            rgba = "0.6 0.6 0.6 1" # 회색
+        elif "lamp" in ident:
+            material = "mat_lamp"
+            
+        if rgba or material:
+            if rgba and not material:
+                if "material" in geom.attrib:
+                    del geom.attrib["material"]
+                geom.set("rgba", rgba)
+                # Ensure no emission on geom
+                if "emission" in geom.attrib:
+                    del geom.attrib["emission"]
+            elif material:
+                geom.set("material", material)
+                if "rgba" in geom.attrib:
+                    del geom.attrib["rgba"]
+                if "emission" in geom.attrib:
+                    del geom.attrib["emission"]
+
+    # Second pass for geoms inside named bodies (to catch doors/switches if mesh name isn't enough)
+    for body in root.findall(".//body"):
+        bname = body.get("name", "").lower()
+        rgba = None
+        emission = None
+        material = None
+        
+        if "wall" in bname:
+            rgba = "0.85 0.85 0.85 1"
+        elif "ceiling" in bname:
+            rgba = "0.85 0.85 0.85 1"
+        elif "base_link" in bname or "floor" in bname:
+            material = "mat_wood"
+        elif "door" in bname and "handle" not in bname and "latch" not in bname:
+            rgba = "0.7 0.5 0.3 1"
+        elif "handle" in bname or "latch" in bname or "switch" in bname:
+            rgba = "0.6 0.6 0.6 1"
+        elif "lamp" in bname:
+            material = "mat_lamp"
+            
+        for geom in body.findall("geom"):
+            if rgba and not material:
+                if "material" in geom.attrib:
+                    del geom.attrib["material"]
+                geom.set("rgba", rgba)
+                if "emission" in geom.attrib:
+                    del geom.attrib["emission"]
+            elif material:
+                geom.set("material", material)
+                if "rgba" in geom.attrib:
+                    del geom.attrib["rgba"]
+                if "emission" in geom.attrib:
+                    del geom.attrib["emission"]
+
     tree.write(out_mjcf_path, encoding="utf-8", xml_declaration=True)
 
     print("Conversion complete! Output saved to:", out_mjcf_path)
