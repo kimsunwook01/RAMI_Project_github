@@ -39,79 +39,87 @@
     <geom pos="0 0 0" type="mesh" mesh="key_switch_case_room_2_1" />
     <geom type="mesh" mesh="ceiling_v1_1" group="3" />
     <geom type="mesh" mesh="lamp_r50_kitchen_1_1" />
+    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="lamp_r50_kitchen_1_1" />
+    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="lamp_r50_kitchen_1_1" />
+    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="lamp_r50_kitchen_1_1" />
+    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="lamp_r50_kitchen_1_1" />
+    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="lamp_r50_kitchen_1_1" />
+    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="lamp_r50_kitchen_1_1" />
+    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="lamp_r50_kitchen_1_1" />
+    <geom type="mesh" mesh="lamp_r50_kitchen_1_1" />
     <body name="door_1_1" pos="5.2 3.4 2.1">
       <inertial pos="-1.02357 -0.025 0.000844161" quat="0.707107 -0.000251454 -0.000251454 0.707107" mass="3205.02" diaginertia="5378.26 4258.48 1121.11" />
-      <joint name="door_1_1_joint" pos="0 0 0" axis="0 0 1" range="-1.57 1.57" actuatorfrcrange="-100 100" frictionloss="0.5" damping="2.0" limited="true" />
+      <joint name="door_1_1_joint" pos="0 0 0" axis="0 0 1" range="-2.79253 0" actuatorfrcrange="-100 100" frictionloss="0.5" damping="2.0" />
       <geom pos="-5.2 -3.4 -2.1" quat="1 0 0 0" type="mesh" mesh="door_1_1" />
       <body name="latch_1_1" pos="1.325 -3.25 -0.29">
         <inertial pos="-3.37218 3.226 -0.08" quat="0.529897 0.529897 0.468198 0.468198" mass="0.630692" diaginertia="0.000296862 0.000208 0.000174138" />
-        <joint name="latch_1_1_joint" pos="0 0 0" axis="1 0 0" type="slide" range="-0.05 0.05" actuatorfrcrange="-100 100" frictionloss="0.5" damping="1.0" limited="true" />
+        <joint name="latch_1_1_joint" pos="0 0 0" axis="1 0 0" type="slide" range="0 0.04" actuatorfrcrange="-100 100" frictionloss="0.5" damping="1.0" stiffness="50.0" springref="0" />
         <geom pos="-6.525 -0.15 -1.81" quat="1 0 0 0" type="mesh" mesh="latch_1_1" />
       </body>
       <body name="door_handle_1_1" pos="-1.8 -0.05 -0.595">
         <inertial pos="0.0174026 0.025 0.00083086" quat="0.495559 0.495559 -0.504402 0.504402" mass="7.30752" diaginertia="0.0511667 0.0392913 0.0191" />
-        <joint name="door_handle_1_1_joint" pos="0 0 0" axis="0 1 0" range="-1.0 1.0" actuatorfrcrange="-100 100" frictionloss="0.1" damping="0.5" stiffness="50.0" springref="0" limited="true" />
+        <joint name="door_handle_1_1_joint" pos="0 0 0" axis="0 1 0" range="0 0.785398" actuatorfrcrange="-100 100" frictionloss="0.1" damping="0.5" stiffness="50.0" springref="0" />
         <geom pos="-3.4 -3.35 -1.505" quat="1 0 0 0" type="mesh" mesh="door_handle_1_1" />
       </body>
     </body>
     <body name="door_2_1" pos="15.6 3.4 2.1">
       <inertial pos="-1.02357 -0.025 0.000844161" quat="0.707107 -0.000251454 -0.000251454 0.707107" mass="3205.02" diaginertia="5378.26 4258.48 1121.11" />
-      <joint name="door_2_1_joint" pos="0 0 0" axis="0 0 1" range="-1.57 1.57" actuatorfrcrange="-100 100" frictionloss="0.5" damping="2.0" limited="true" />
+      <joint name="door_2_1_joint" pos="0 0 0" axis="0 0 1" range="-2.00713 0" actuatorfrcrange="-100 100" frictionloss="0.5" damping="2.0" />
       <geom pos="-15.6 -3.4 -2.1" quat="1 0 0 0" type="mesh" mesh="door_2_1" />
       <body name="latch_2_1" pos="1.325 -13.65 -0.29">
         <inertial pos="-3.3722 13.626 -0.08" quat="0.529897 0.529897 0.468198 0.468198" mass="0.630692" diaginertia="0.000296862 0.000208 0.000174138" />
-        <joint name="latch_2_1_joint" pos="0 0 0" axis="1 0 0" type="slide" range="-0.05 0.05" actuatorfrcrange="-100 100" frictionloss="0.5" damping="1.0" limited="true" />
+        <joint name="latch_2_1_joint" pos="0 0 0" axis="1 0 0" type="slide" range="0 0.04" actuatorfrcrange="-100 100" frictionloss="0.5" damping="1.0" stiffness="50.0" springref="0" />
         <geom pos="-16.925 10.25 -1.81" quat="1 0 0 0" type="mesh" mesh="latch_2_1" />
       </body>
       <body name="door_handle_2_1" pos="-1.8 -0.05 -0.595">
         <inertial pos="0.0174026 0.025 0.00083086" quat="0.495559 0.495559 -0.504402 0.504402" mass="7.30752" diaginertia="0.0511667 0.0392913 0.0191" />
-        <joint name="door_handle_2_1_joint" pos="0 0 0" axis="0 1 0" range="-1.0 1.0" actuatorfrcrange="-100 100" frictionloss="0.1" damping="0.5" stiffness="50.0" springref="0" limited="true" />
+        <joint name="door_handle_2_1_joint" pos="0 0 0" axis="0 1 0" range="0 0.785398" actuatorfrcrange="-100 100" frictionloss="0.1" damping="0.5" stiffness="50.0" springref="0" />
         <geom pos="-13.8 -3.35 -1.505" quat="1 0 0 0" type="mesh" mesh="door_handle_2_1" />
       </body>
     </body>
     <body name="toggle_switch_H40_living-room-lamp_1_1" pos="11.6 10.015 1.26">
       <inertial pos="4.87775e-09 0.00158461 0.02" quat="0.5 0.5 0.5 0.5" mass="0.300252" diaginertia="0.000113 8.4e-05 5e-05" />
-      <joint name="toggle_switch_H40_living-room-lamp_1_1_joint" pos="0 0 0" axis="0 0 1" range="-0.5 0.5" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" limited="true" />
+      <joint name="toggle_switch_H40_living-room-lamp_1_1_joint" pos="4.87775e-09 0.00158461 0.02" axis="0 0 1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" />
       <geom pos="-11.6 -10.015 -1.26" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H40_living-room-lamp_1_1" />
     </body>
     <body name="toggle_switch_H40_living-room-lamp_2_1" pos="23.161 11.26 -8.665">
       <inertial pos="-11.561 -1.24342 9.985" quat="0.5 0.5 0.5 0.5" mass="0.300252" diaginertia="0.000113 8.4e-05 5e-05" />
-      <joint name="toggle_switch_H40_living-room-lamp_2_1_joint" pos="0 0 0" axis="0 0 1" range="-0.5 0.5" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" limited="true" />
+      <joint name="toggle_switch_H40_living-room-lamp_2_1_joint" pos="-11.561 -1.24342 9.985" axis="0 0 1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" />
       <geom pos="-23.161 -11.26 8.665" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H40_living-room-lamp_2_1" />
     </body>
     <body name="toggle_switch_H20_corridor-lamp_2_1" pos="18.14 20.746 0.75">
       <inertial pos="1.64347 -19.7458 0.94" quat="0.531491 0.466387 -0.531491 0.466387" mass="0.14938" diaginertia="4.2e-05 4.15242e-05 1.04758e-05" />
-      <joint name="toggle_switch_H20_corridor-lamp_2_1_joint" pos="0 0 0" axis="0 0 1" range="-0.5 0.5" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" limited="true" />
+      <joint name="toggle_switch_H20_corridor-lamp_2_1_joint" pos="1.64347 -19.7458 0.94" axis="0 0 1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" />
       <geom pos="-18.14 -20.746 -0.75" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H20_corridor-lamp_2_1" />
     </body>
     <body name="toggle_switch_H20_corridor-lamp_3_1" pos="18.14 20.746 0.75">
       <inertial pos="1.64347 -19.7458 0.96" quat="0.531491 0.466387 -0.531491 0.466387" mass="0.14938" diaginertia="4.2e-05 4.15242e-05 1.04758e-05" />
-      <joint name="toggle_switch_H20_corridor-lamp_3_1_joint" pos="0 0 0" axis="0 0 1" range="-0.5 0.5" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" limited="true" />
+      <joint name="toggle_switch_H20_corridor-lamp_3_1_joint" pos="1.64347 -19.7458 0.96" axis="0 0 1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" />
       <geom pos="-18.14 -20.746 -0.75" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H20_corridor-lamp_3_1" />
     </body>
     <body name="toggle_switch_H20_corridor-lamp_4_1" pos="18.14 20.746 0.75">
       <inertial pos="1.64347 -19.7458 0.98" quat="0.531491 0.466387 -0.531491 0.466387" mass="0.14938" diaginertia="4.2e-05 4.15242e-05 1.04758e-05" />
-      <joint name="toggle_switch_H20_corridor-lamp_4_1_joint" pos="0 0 0" axis="0 0 1" range="-0.5 0.5" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" limited="true" />
+      <joint name="toggle_switch_H20_corridor-lamp_4_1_joint" pos="1.64347 -19.7458 0.98" axis="0 0 1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" />
       <geom pos="-18.14 -20.746 -0.75" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H20_corridor-lamp_4_1" />
     </body>
     <body name="toggle_switch_H20_corridor-lamp_1_1" pos="19.785 1 1.66">
       <inertial pos="-0.0015251 0.000200788 0.01" quat="0.531491 0.466387 -0.531491 0.466387" mass="0.14938" diaginertia="4.2e-05 4.15242e-05 1.04758e-05" />
-      <joint name="toggle_switch_H20_corridor-lamp_1_1_joint" pos="0 0 0" axis="0 0 1" range="-0.5 0.5" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" limited="true" />
+      <joint name="toggle_switch_H20_corridor-lamp_1_1_joint" pos="-0.0015251 0.000200788 0.01" axis="0 0 1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" />
       <geom pos="-19.785 -1 -1.66" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H20_corridor-lamp_1_1" />
     </body>
     <body name="toggle_switch_H80_kitchen-lamp_1_1" pos="3.2 19.785 1.66">
       <inertial pos="-4.89003e-09 -0.00160762 0.04" quat="0.707107 0 0 0.707107" mass="0.601995" diaginertia="0.000466 0.000341 0.000168" />
-      <joint name="toggle_switch_H80_kitchen-lamp_1_1_joint" pos="0 0 0" axis="0 0 -1" range="-0.5 0.5" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" limited="true" />
+      <joint name="toggle_switch_H80_kitchen-lamp_1_1_joint" pos="-4.89003e-09 -0.00160762 0.04" axis="0 0 -1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" />
       <geom pos="-3.2 -19.785 -1.66" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H80_kitchen-lamp_1_1" />
     </body>
     <body name="toggle_switch_H80_room-ramp_1_1" pos="11.9 3.415 1.66">
       <inertial pos="0.000209841 0.00159386 0.04" quat="0.751303 0 0 0.659958" mass="0.601995" diaginertia="0.00046608 0.00034092 0.000168" />
-      <joint name="toggle_switch_H80_room-ramp_1_1_joint" pos="0 0 0" axis="0 0 1" range="-0.5 0.5" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" limited="true" />
+      <joint name="toggle_switch_H80_room-ramp_1_1_joint" pos="0.000209841 0.00159386 0.04" axis="0 0 1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.1" />
       <geom pos="-11.9 -3.415 -1.66" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H80_room-ramp_1_1" />
     </body>
     <body name="key_switch_room-ramp_2_1" pos="1.9 13.17 1.525">
       <inertial pos="-1.67759 -6.57 0.175" mass="0.146062" diaginertia="2.9e-05 1.7e-05 1.7e-05" />
-      <joint name="key_switch_room-ramp_2_1_joint" pos="0 0 0" axis="1 0 0" type="slide" range="-0.02 0" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.5" stiffness="10.0" springref="0" limited="true" />
+      <joint name="key_switch_room-ramp_2_1_joint" pos="-1.67759 -6.57 0.175" axis="1 0 0" type="slide" range="0 0.01" actuatorfrcrange="-100 100" frictionloss="0.2" damping="0.5" stiffness="10.0" springref="0" />
       <geom pos="-1.9 -13.17 -1.525" type="mesh" mesh="key_switch_room-ramp_2_1" />
     </body>
   </worldbody>

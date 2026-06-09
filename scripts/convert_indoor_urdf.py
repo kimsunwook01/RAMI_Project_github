@@ -39,10 +39,16 @@ def main():
                 else:
                     filepath = filename
                 if not os.path.exists(filepath):
-                    print(f"Warning: Mesh not found, removing link '{link.get('name')}': {filepath}")
-                    missing_links.add(link.get("name"))
-                    urdf_root.remove(link)
-                    break
+                    if "lamp" in filename.lower():
+                        # 대체용 전등 파일 경로로 덮어쓰기
+                        fallback_path = os.path.join(root_dir, "indoor_space_urdf_description/meshes/lamp_r50_kitchen_1_1.stl").replace("\\", "/")
+                        mesh.set("filename", fallback_path)
+                        print(f"Warning: Mesh not found, but substituted with fallback '{link.get('name')}': {filepath}")
+                    else:
+                        print(f"Warning: Mesh not found, removing link '{link.get('name')}': {filepath}")
+                        missing_links.add(link.get("name"))
+                        urdf_root.remove(link)
+                        break
         
         # Remove joints that reference missing links
         for joint in urdf_root.findall("joint"):
@@ -96,36 +102,57 @@ def main():
             # Main doors (여닫이 문)
             joint.set("frictionloss", "0.5")
             joint.set("damping", "2.0")
-            joint.set("range", "-1.57 1.57")
-            joint.set("limited", "true")
         elif "door_handle" in jname:
             # Door handles (스프링 복원력 추가)
             joint.set("frictionloss", "0.1")
             joint.set("damping", "0.5")
             joint.set("stiffness", "50.0")
             joint.set("springref", "0")
-            joint.set("range", "-1.0 1.0")
-            joint.set("limited", "true")
         elif "latch" in jname:
-            # Latches
+            # Latches (스프링 탄성으로 항상 튀어나오게 설정)
             joint.set("frictionloss", "0.5")
             joint.set("damping", "1.0")
-            joint.set("range", "-0.05 0.05")
-            joint.set("limited", "true")
+            joint.set("stiffness", "50.0")
+            joint.set("springref", "0")
         elif "toggle_switch" in jname:
             # Toggle switches
             joint.set("frictionloss", "0.2")
             joint.set("damping", "0.1")
-            joint.set("range", "-0.5 0.5")
-            joint.set("limited", "true")
+            # 스위치가 벽을 뚫고 거대한 원을 그리며 회전하는 문제(원거리 Pivot) 해결
+            # 관성 중심(COM)을 조인트 회전축의 중심(pos)으로 설정하여 제자리에서 회전하도록 함
+            parent_body = None
+            for body in root.findall(".//body"):
+                for j in body.findall("joint"):
+                    if j.get("name") == jname:
+                        parent_body = body
+                        break
+                if parent_body is not None:
+                    break
+            
+            if parent_body is not None:
+                inertial = parent_body.find("inertial")
+                if inertial is not None:
+                    joint.set("pos", inertial.get("pos", "0 0 0"))
         elif "key_switch" in jname:
             # Key switches
             joint.set("frictionloss", "0.2")
             joint.set("damping", "0.5")
             joint.set("stiffness", "10.0")
             joint.set("springref", "0")
-            joint.set("range", "-0.02 0")
-            joint.set("limited", "true")
+            
+            parent_body = None
+            for body in root.findall(".//body"):
+                for j in body.findall("joint"):
+                    if j.get("name") == jname:
+                        parent_body = body
+                        break
+                if parent_body is not None:
+                    break
+                    
+            if parent_body is not None:
+                inertial = parent_body.find("inertial")
+                if inertial is not None:
+                    joint.set("pos", inertial.get("pos", "0 0 0"))
 
     tree.write(out_mjcf_path, encoding="utf-8", xml_declaration=True)
 
