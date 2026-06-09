@@ -407,7 +407,7 @@ def main():
         # Add texture and material to asset
         tex_name = f"tex_{qr_name}"
         mat_name = f"mat_{qr_name}"
-        ET.SubElement(asset, "texture", {"name": tex_name, "type": "2d", "file": img_path.replace("\\", "/")})
+        ET.SubElement(asset, "texture", {"name": tex_name, "type": "cube", "file": img_path.replace("\\", "/")})
         ET.SubElement(asset, "material", {"name": mat_name, "texture": tex_name, "emission": "0.5"})
         
         # Add geom
