@@ -316,11 +316,11 @@ def main():
                 "dir": "0 0 -1",
                 "directional": "false",
                 "castshadow": "true",
-                "diffuse": "0.8 0.8 0.6",
-                "specular": "0.2 0.2 0.2",
-                "attenuation": "0.1 0.1 0.1",
-                "cutoff": "45",
-                "exponent": "10"
+                "diffuse": "1.2 1.2 0.8",
+                "specular": "0.5 0.5 0.5",
+                "attenuation": "1 0 0",
+                "cutoff": "90",
+                "exponent": "2"
             })
             lamp_id += 1
 
