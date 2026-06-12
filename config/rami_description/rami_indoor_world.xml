@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mujoco model="robot_RAMI_v1_urdf">
-  <compiler angle="radian" />
+  <compiler angle="radian" meshdir="" texturedir="" />
 
   <asset>
-    <!-- Sensor Visualization Materials and Meshes -->
+    
     <material name="vis_camera" rgba="1 1 0 0.3" emission="1" />
     <material name="vis_ultrasonic" rgba="0 0.5 1 0.3" emission="1" />
     <mesh name="visual_pyramid_head" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/visual_pyramid.stl" scale="16.782 16.782 10" />
@@ -35,19 +35,42 @@
     <mesh name="ultrasonic_sensor_7_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_7_1.stl" scale="0.001 0.001 0.001" />
     <mesh name="ultrasonic_sensor_8_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_8_1.stl" scale="0.001 0.001 0.001" />
     <mesh name="imu_sensor_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/imu_sensor_1.stl" scale="0.001 0.001 0.001" />
-  </asset>
+  <mesh name="room_base_link" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/base_link.stl" scale="0.001 0.001 0.001" />
+    <mesh name="wall_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/wall_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="door_1_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/door_1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="door_2_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/door_2_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="latch_1_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/latch_1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="latch_2_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/latch_2_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="door_handle_1_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/door_handle_1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="toggle_switch_case_living-room_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/toggle_switch_case_living-room_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="toggle_switch_case_corridor_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/toggle_switch_case_corridor_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="toggle_switch_H20_corridor-lamp_2_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/toggle_switch_H20_corridor-lamp_2_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="door_handle_2_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/door_handle_2_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="toggle_switch_H20_corridor-lamp_3_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/toggle_switch_H20_corridor-lamp_3_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="toggle_switch_H20_corridor-lamp_4_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/toggle_switch_H20_corridor-lamp_4_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="toggle_switch_case_kitchen_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/toggle_switch_case_kitchen_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="toggle_switch_H80_kitchen-lamp_1_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/toggle_switch_H80_kitchen-lamp_1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="toggle_switch_H40_living-room-lamp_1_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/toggle_switch_H40_living-room-lamp_1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="toggle_switch_H40_living-room-lamp_2_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/toggle_switch_H40_living-room-lamp_2_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="toggle_switch_H20_corridor-lamp_1_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/toggle_switch_H20_corridor-lamp_1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="toggle_switch_case_room_1_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/toggle_switch_case_room_1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="toggle_switch_H80_room-ramp_1_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/toggle_switch_H80_room-ramp_1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="key_switch_case_room_2_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/key_switch_case_room_2_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="key_switch_room-ramp_2_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/key_switch_room-ramp_2_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="ceiling_v1_1" content_type="model/stl" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/ceiling_v1_1.stl" scale="0.001 0.001 0.001" />
+  <texture name="tex_wood" type="2d" builtin="checker" rgb1="0.3 0.15 0.05" rgb2="0.2 0.1 0.02" width="512" height="512" mark="edge" markrgb="0.1 0.05 0.01" /><material name="mat_wood" texture="tex_wood" texrepeat="20 20" reflectance="0.1" /><material name="mat_lamp" rgba="0.95 0.95 0.5 1" emission="1.0" /><texture name="tex_qr" type="2d" builtin="checker" rgb1="0 0 0" rgb2="1 1 1" width="128" height="128" mark="none" /><material name="mat_qr" texture="tex_qr" texrepeat="5 5" emission="0.5" /><texture name="tex_qr_switch_case_1" type="cube" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/qr_codes/switch_case_1.png" /><material name="mat_qr_switch_case_1" texture="tex_qr_switch_case_1" emission="0.5" /><texture name="tex_qr_switch_case_2" type="cube" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/qr_codes/switch_case_2.png" /><material name="mat_qr_switch_case_2" texture="tex_qr_switch_case_2" emission="0.5" /><texture name="tex_qr_switch_case_3" type="cube" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/qr_codes/switch_case_3.png" /><material name="mat_qr_switch_case_3" texture="tex_qr_switch_case_3" emission="0.5" /><texture name="tex_qr_switch_case_4" type="cube" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/qr_codes/switch_case_4.png" /><material name="mat_qr_switch_case_4" texture="tex_qr_switch_case_4" emission="0.5" /><texture name="tex_qr_switch_case_5" type="cube" file="d:/Programming/RAMI_Project/indoor_space_urdf_description/meshes/qr_codes/switch_case_5.png" /><material name="mat_qr_switch_case_5" texture="tex_qr_switch_case_5" emission="0.5" /></asset>
 
   <worldbody>
-    <!-- 시각적 IK 타겟 마커 (빨간 반투명 구체, mocap 바디로 설정하여 런타임 이동 가능) -->
+    
     <body name="target_marker" pos="0 0 0" mocap="true">
-        <geom type="sphere" size="0.05" rgba="1 0 0 0.5" contype="0" conaffinity="0" group="1"/>
+        <geom type="sphere" size="0.05" rgba="1 0 0 0.5" contype="0" conaffinity="0" group="1" />
     </body>
     <light pos="0 0 3" dir="0 0 -1" directional="true" castshadow="false" />
-    <!-- 바닥 넓이를 2배로 확장 (size 5 -> 10) -->
+    
     <geom name="floor" type="plane" size="10 10 0.05" rgba="0.8 0.9 0.8 1" />
     
-    <!-- Test 18-1: 로봇 정면(Y축 음수 방향) 5m 거리에 임의의 객체 2개 생성 -->
-    <!-- 참고: YOLOv8이 원색 기본 도형을 특정 객체(예: 스포츠 공, 물병, 박스 등)로 인식하는지 테스트합니다. -->
+    
+    
     <body name="test_object_cylinder" pos="0 -5 0.5">
         <freejoint />
         <geom type="cylinder" size="0.25 0.5" rgba="0.8 0.2 0.2 1" />
@@ -57,9 +80,9 @@
         <geom type="box" size="0.4 0.4 0.4" rgba="0.2 0.4 0.8 1" />
     </body>
     
-    <!-- Test 18-2: 로봇 정면 1m (Y=-1), 그리퍼 카메라 높이 근처에 떠 있는 작은 초록 공 -->
+    
     <body name="test_object_sphere" pos="0 -1.0 0.88">
-        <!-- freejoint가 없으므로 공중에 고정됨 -->
+        
         <geom type="sphere" size="0.08" rgba="0.1 0.9 0.1 1" />
     </body>
     <body name="base_link" pos="0 0 0.085">
@@ -68,7 +91,7 @@
       <joint name="root_y" type="slide" axis="0 1 0" damping="2" frictionloss="0.5" />
       <joint name="root_z_rot" type="hinge" axis="0 0 1" damping="2" frictionloss="0.5" />
       <geom type="mesh" mesh="base_link" contype="0" conaffinity="0" />
-      <!-- SLAM 벽면 충돌을 위한 베이스 프록시 (바닥과 닿지 않도록 Z 위치를 높임) -->
+      
       <geom type="cylinder" size="0.25 0.3" pos="0 0 0.4" contype="1" conaffinity="1" rgba="0 1 0 0.0" group="3" />
       <geom type="mesh" mesh="pillar_link_1" contype="2" conaffinity="2" />
       <geom type="mesh" mesh="depth_camera_1" contype="0" conaffinity="0" />
@@ -82,7 +105,7 @@
       <geom type="mesh" mesh="ultrasonic_sensor_8_1" contype="0" conaffinity="0" />
       <geom type="mesh" mesh="imu_sensor_1" contype="0" conaffinity="0" />
 
-      <!-- Sensors on base_link -->
+      
       <camera name="head_camera" pos="0 0 1.515" xyaxes="-1 0 0 0 0 1" fovy="80" />
       <geom name="head_cam_vis" type="mesh" mesh="visual_pyramid_head" pos="0 0 1.515" xyaxes="-1 0 0 0 0 1" material="vis_camera" contype="0" conaffinity="0" group="5" />
       
@@ -163,7 +186,7 @@
                     <geom pos="0 0.6 -0.865" quat="1 0 0 0" type="mesh" mesh="gripper_camera_1" />
                     
                     <camera name="gripper_camera" pos="0 -0.015 0.05" xyaxes="-1 0 0 0 0 1" fovy="60" />
-                    <geom name="gripper_cam_vis" type="mesh" mesh="visual_pyramid_gripper" pos="0 -0.015 0.05" xyaxes="-1 0 0 0 0 1" material="vis_camera" contype="0" conaffinity="0" group="2" />
+                    <geom name="gripper_cam_vis" type="mesh" mesh="visual_pyramid_gripper" pos="0 -0.015 0.05" xyaxes="-1 0 0 0 0 1" material="vis_camera" contype="0" conaffinity="0" group="5" />
                     
                     <body name="arm_link_6_1" pos="-0.005 -0.03 -0.015">
                       <inertial pos="0.005 -0.0180282 0.00316455" quat="0.534551 0.462877 -0.462877 0.534551" mass="0.44765" diaginertia="0.0002929 0.000233 0.0001021" />
@@ -178,7 +201,99 @@
         </body>
       </body>
     </body>
-  </worldbody>
+  <geom type="mesh" mesh="room_base_link" material="mat_wood" />
+    <geom type="mesh" mesh="wall_1" rgba="0.85 0.85 0.85 1" />
+    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="toggle_switch_case_living-room_1" rgba="0.6 0.6 0.6 1" />
+    <geom pos="0 0 0" type="mesh" mesh="toggle_switch_case_corridor_1" rgba="0.6 0.6 0.6 1" />
+    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="toggle_switch_case_kitchen_1" rgba="0.6 0.6 0.6 1" />
+    <geom pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="toggle_switch_case_room_1_1" rgba="0.6 0.6 0.6 1" />
+    <geom pos="0 0 0" type="mesh" mesh="key_switch_case_room_2_1" rgba="0.6 0.6 0.6 1" />
+    <geom type="mesh" mesh="ceiling_v1_1" group="3" rgba="0.85 0.85 0.85 1" />
+    <geom size="0.025 0.025 0.01" pos="2.5 1.5 5.45" type="box" material="mat_lamp" />
+    <geom size="0.025 0.025 0.01" pos="10.5 1.5 5.45" type="box" material="mat_lamp" />
+    <geom size="0.025 0.025 0.01" pos="18.5 1.5 5.45" type="box" material="mat_lamp" />
+    <geom size="0.025 0.025 0.01" pos="18.5 5.5 5.45" type="box" material="mat_lamp" />
+    <geom size="0.1 0.1 0.01" pos="5 8 5.45" type="box" material="mat_lamp" />
+    <geom size="0.1 0.1 0.01" pos="13 8 5.45" type="box" material="mat_lamp" />
+    <geom size="0.05 0.15 0.01" pos="11 16 5.45" type="box" material="mat_lamp" />
+    <geom size="0.05 0.15 0.01" pos="15 16 5.45" type="box" material="mat_lamp" />
+    <geom size="0.05 0.01" pos="3 15 4.6875" type="cylinder" material="mat_lamp" />
+    <body name="door_1_1" pos="5.2 3.4 2.1">
+      <inertial pos="-1.02357 -0.025 0.000844161" quat="0.707107 -0.000251454 -0.000251454 0.707107" mass="3205.02" diaginertia="5378.26 4258.48 1121.11" />
+      <joint name="door_1_1_joint" pos="0 0 0" axis="0 0 1" range="-2.79253 0" actuatorfrcrange="-100 100" limited="true" frictionloss="0.5" damping="2.0" />
+      <geom pos="-5.2 -3.4 -2.1" quat="1 0 0 0" type="mesh" mesh="door_1_1" rgba="0.7 0.5 0.3 1" />
+      <body name="latch_1_1" pos="1.325 -3.25 -0.29">
+        <inertial pos="-3.37218 3.226 -0.08" quat="0.529897 0.529897 0.468198 0.468198" mass="0.630692" diaginertia="0.000296862 0.000208 0.000174138" />
+        <joint name="latch_1_1_joint" pos="0 0 0" axis="1 0 0" type="slide" range="0 0.04" actuatorfrcrange="-100 100" limited="true" frictionloss="0.5" damping="1.0" stiffness="50.0" springref="0" />
+        <geom pos="-6.525 -0.15 -1.81" quat="1 0 0 0" type="mesh" mesh="latch_1_1" rgba="0.6 0.6 0.6 1" />
+      </body>
+      <body name="door_handle_1_1" pos="-1.8 -0.05 -0.595">
+        <inertial pos="0.0174026 0.025 0.00083086" quat="0.495559 0.495559 -0.504402 0.504402" mass="7.30752" diaginertia="0.0511667 0.0392913 0.0191" />
+        <joint name="door_handle_1_1_joint" pos="0 0 0" axis="0 1 0" range="0 0.785398" actuatorfrcrange="-100 100" limited="true" frictionloss="0.1" damping="0.5" stiffness="50.0" springref="0" />
+        <geom pos="-3.4 -3.35 -1.505" quat="1 0 0 0" type="mesh" mesh="door_handle_1_1" rgba="0.6 0.6 0.6 1" />
+      </body>
+    </body>
+    <body name="door_2_1" pos="15.6 3.4 2.1">
+      <inertial pos="-1.02357 -0.025 0.000844161" quat="0.707107 -0.000251454 -0.000251454 0.707107" mass="3205.02" diaginertia="5378.26 4258.48 1121.11" />
+      <joint name="door_2_1_joint" pos="0 0 0" axis="0 0 1" range="-2.00713 0" actuatorfrcrange="-100 100" limited="true" frictionloss="0.5" damping="2.0" />
+      <geom pos="-15.6 -3.4 -2.1" quat="1 0 0 0" type="mesh" mesh="door_2_1" rgba="0.7 0.5 0.3 1" />
+      <body name="latch_2_1" pos="1.325 -13.65 -0.29">
+        <inertial pos="-3.3722 13.626 -0.08" quat="0.529897 0.529897 0.468198 0.468198" mass="0.630692" diaginertia="0.000296862 0.000208 0.000174138" />
+        <joint name="latch_2_1_joint" pos="0 0 0" axis="1 0 0" type="slide" range="0 0.04" actuatorfrcrange="-100 100" limited="true" frictionloss="0.5" damping="1.0" stiffness="50.0" springref="0" />
+        <geom pos="-16.925 10.25 -1.81" quat="1 0 0 0" type="mesh" mesh="latch_2_1" rgba="0.6 0.6 0.6 1" />
+      </body>
+      <body name="door_handle_2_1" pos="-1.8 -0.05 -0.595">
+        <inertial pos="0.0174026 0.025 0.00083086" quat="0.495559 0.495559 -0.504402 0.504402" mass="7.30752" diaginertia="0.0511667 0.0392913 0.0191" />
+        <joint name="door_handle_2_1_joint" pos="0 0 0" axis="0 1 0" range="0 0.785398" actuatorfrcrange="-100 100" limited="true" frictionloss="0.1" damping="0.5" stiffness="50.0" springref="0" />
+        <geom pos="-13.8 -3.35 -1.505" quat="1 0 0 0" type="mesh" mesh="door_handle_2_1" rgba="0.6 0.6 0.6 1" />
+      </body>
+    </body>
+    <body name="toggle_switch_H40_living-room-lamp_1_1" pos="11.6 10.015 1.26">
+      <inertial pos="4.87775e-09 0.00158461 0.02" quat="0.5 0.5 0.5 0.5" mass="0.300252" diaginertia="0.000113 8.4e-05 5e-05" />
+      <joint name="toggle_switch_H40_living-room-lamp_1_1_joint" pos="4.87775e-09 0.00158461 0.02" axis="0 0 1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" limited="true" frictionloss="0.2" damping="0.1" />
+      <geom pos="-11.6 -10.015 -1.26" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H40_living-room-lamp_1_1" rgba="0.6 0.6 0.6 1" />
+    </body>
+    <body name="toggle_switch_H40_living-room-lamp_2_1" pos="23.161 11.26 -8.665">
+      <inertial pos="-11.561 -1.24342 9.985" quat="0.5 0.5 0.5 0.5" mass="0.300252" diaginertia="0.000113 8.4e-05 5e-05" />
+      <joint name="toggle_switch_H40_living-room-lamp_2_1_joint" pos="-11.561 -1.24342 9.985" axis="0 0 1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" limited="true" frictionloss="0.2" damping="0.1" />
+      <geom pos="-23.161 -11.26 8.665" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H40_living-room-lamp_2_1" rgba="0.6 0.6 0.6 1" />
+    </body>
+    <body name="toggle_switch_H20_corridor-lamp_2_1" pos="18.14 20.746 0.75">
+      <inertial pos="1.64347 -19.7458 0.94" quat="0.531491 0.466387 -0.531491 0.466387" mass="0.14938" diaginertia="4.2e-05 4.15242e-05 1.04758e-05" />
+      <joint name="toggle_switch_H20_corridor-lamp_2_1_joint" pos="1.64347 -19.7458 0.94" axis="0 0 1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" limited="true" frictionloss="0.2" damping="0.1" />
+      <geom pos="-18.14 -20.746 -0.75" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H20_corridor-lamp_2_1" rgba="0.6 0.6 0.6 1" />
+    </body>
+    <body name="toggle_switch_H20_corridor-lamp_3_1" pos="18.14 20.746 0.75">
+      <inertial pos="1.64347 -19.7458 0.96" quat="0.531491 0.466387 -0.531491 0.466387" mass="0.14938" diaginertia="4.2e-05 4.15242e-05 1.04758e-05" />
+      <joint name="toggle_switch_H20_corridor-lamp_3_1_joint" pos="1.64347 -19.7458 0.96" axis="0 0 1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" limited="true" frictionloss="0.2" damping="0.1" />
+      <geom pos="-18.14 -20.746 -0.75" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H20_corridor-lamp_3_1" rgba="0.6 0.6 0.6 1" />
+    </body>
+    <body name="toggle_switch_H20_corridor-lamp_4_1" pos="18.14 20.746 0.75">
+      <inertial pos="1.64347 -19.7458 0.98" quat="0.531491 0.466387 -0.531491 0.466387" mass="0.14938" diaginertia="4.2e-05 4.15242e-05 1.04758e-05" />
+      <joint name="toggle_switch_H20_corridor-lamp_4_1_joint" pos="1.64347 -19.7458 0.98" axis="0 0 1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" limited="true" frictionloss="0.2" damping="0.1" />
+      <geom pos="-18.14 -20.746 -0.75" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H20_corridor-lamp_4_1" rgba="0.6 0.6 0.6 1" />
+    </body>
+    <body name="toggle_switch_H20_corridor-lamp_1_1" pos="19.785 1 1.66">
+      <inertial pos="-0.0015251 0.000200788 0.01" quat="0.531491 0.466387 -0.531491 0.466387" mass="0.14938" diaginertia="4.2e-05 4.15242e-05 1.04758e-05" />
+      <joint name="toggle_switch_H20_corridor-lamp_1_1_joint" pos="-0.0015251 0.000200788 0.01" axis="0 0 1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" limited="true" frictionloss="0.2" damping="0.1" />
+      <geom pos="-19.785 -1 -1.66" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H20_corridor-lamp_1_1" rgba="0.6 0.6 0.6 1" />
+    </body>
+    <body name="toggle_switch_H80_kitchen-lamp_1_1" pos="3.2 19.785 1.66">
+      <inertial pos="-4.89003e-09 -0.00160762 0.04" quat="0.707107 0 0 0.707107" mass="0.601995" diaginertia="0.000466 0.000341 0.000168" />
+      <joint name="toggle_switch_H80_kitchen-lamp_1_1_joint" pos="-4.89003e-09 -0.00160762 0.04" axis="0 0 -1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" limited="true" frictionloss="0.2" damping="0.1" />
+      <geom pos="-3.2 -19.785 -1.66" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H80_kitchen-lamp_1_1" rgba="0.6 0.6 0.6 1" />
+    </body>
+    <body name="toggle_switch_H80_room-ramp_1_1" pos="11.9 3.415 1.66">
+      <inertial pos="0.000209841 0.00159386 0.04" quat="0.751303 0 0 0.659958" mass="0.601995" diaginertia="0.00046608 0.00034092 0.000168" />
+      <joint name="toggle_switch_H80_room-ramp_1_1_joint" pos="0.000209841 0.00159386 0.04" axis="0 0 1" range="-0.1309 0.1309" actuatorfrcrange="-100 100" limited="true" frictionloss="0.2" damping="0.1" />
+      <geom pos="-11.9 -3.415 -1.66" quat="1 0 0 0" type="mesh" mesh="toggle_switch_H80_room-ramp_1_1" rgba="0.6 0.6 0.6 1" />
+    </body>
+    <body name="key_switch_room-ramp_2_1" pos="1.9 13.17 1.525">
+      <inertial pos="-1.67759 -6.57 0.175" mass="0.146062" diaginertia="2.9e-05 1.7e-05 1.7e-05" />
+      <joint name="key_switch_room-ramp_2_1_joint" pos="-1.67759 -6.57 0.175" axis="1 0 0" type="slide" range="0 0.01" actuatorfrcrange="-100 100" limited="true" frictionloss="0.2" damping="0.5" stiffness="10.0" springref="0" />
+      <geom pos="-1.9 -13.17 -1.525" type="mesh" mesh="key_switch_room-ramp_2_1" rgba="0.6 0.6 0.6 1" />
+    </body>
+  <geom name="qr_switch_case_1" type="box" size="0.02 0.02 0.02" pos="11.600000002438875 10.016582305 1.4200000000000004" material="mat_qr_switch_case_1" /><geom name="qr_switch_case_2" type="box" size="0.02 0.02 0.02" pos="19.783471225 1.0002001969999996 1.83" material="mat_qr_switch_case_2" /><geom name="qr_switch_case_3" type="box" size="0.02 0.02 0.02" pos="3.19999999510997 19.78339238 1.8" material="mat_qr_switch_case_3" /><geom name="qr_switch_case_4" type="box" size="0.02 0.02 0.02" pos="11.900209841 3.41659386 1.8" material="mat_qr_switch_case_4" /><geom name="qr_switch_case_5" type="box" size="0.02 0.02 0.02" pos="0.22241 6.6 1.8" material="mat_qr_switch_case_5" /></worldbody>
 
   <actuator>
     <velocity name="base_vx" joint="root_x" kv="200" ctrlrange="-5 5" />
@@ -190,7 +305,7 @@
     <velocity name="weel_rf" joint="weel_RF_joint" kv="2" ctrlrange="-50 50" />
     <velocity name="weel_rb" joint="weel_RB_joint" kv="2" ctrlrange="-50 50" />
 
-    <!-- 리프트 및 암 조인트 Position Actuator -->
+    
     <position name="act_lift" joint="lift_slide_joint" kp="50000" forcerange="-10000 10000" ctrlrange="-0.62 0.62" />
     <position name="act_rot" joint="rotation_joint" kp="10000" forcerange="-1000 1000" ctrlrange="-3.14159 3.14159" />
     <position name="act_arm1" joint="arm_joint_1" kp="15000" forcerange="-1000 1000" ctrlrange="-1.5708 1.5708" />
