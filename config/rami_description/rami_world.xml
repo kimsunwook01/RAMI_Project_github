@@ -6,35 +6,35 @@
     <!-- Sensor Visualization Materials and Meshes -->
     <material name="vis_camera" rgba="1 1 0 0.3" emission="1" />
     <material name="vis_ultrasonic" rgba="0 0.5 1 0.3" emission="1" />
-    <mesh name="visual_pyramid_head" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/visual_pyramid.stl" scale="16.782 16.782 10" />
-    <mesh name="visual_pyramid_gripper" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/visual_pyramid.stl" scale="1.154 1.154 1" />
-    <mesh name="visual_cone_us" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/visual_cone.stl" scale="1.339 1.339 5" />
+    <mesh name="visual_pyramid_head" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/visual_pyramid.stl" scale="16.782 16.782 10" />
+    <mesh name="visual_pyramid_gripper" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/visual_pyramid.stl" scale="1.154 1.154 1" />
+    <mesh name="visual_cone_us" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/visual_cone.stl" scale="1.339 1.339 5" />
 
-    <mesh name="base_link" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/base_link.stl" scale="0.001 0.001 0.001" />
-    <mesh name="weel_left_front_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/weel_left_front_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="weel_left_back_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/weel_left_back_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="weel_right_front_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/weel_right_front_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="weel_right_back_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/weel_right_back_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="pillar_link_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/pillar_link_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="lift_slide_link_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/lift_slide_link_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="rotation_link_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/rotation_link_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="arm_link_1_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/arm_link_1_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="arm_link_2_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/arm_link_2_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="arm_link_3_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/arm_link_3_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="arm_link_4_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/arm_link_4_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="arm_link_5_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/arm_link_5_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="arm_link_6_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/arm_link_6_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="depth_camera_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/depth_camera_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="gripper_camera_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/gripper_camera_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="ultrasonic_sensor_1_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_1_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="ultrasonic_sensor_2_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_2_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="ultrasonic_sensor_3_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_3_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="ultrasonic_sensor_4_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_4_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="ultrasonic_sensor_5_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_5_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="ultrasonic_sensor_6_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_6_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="ultrasonic_sensor_7_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_7_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="ultrasonic_sensor_8_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_8_1.stl" scale="0.001 0.001 0.001" />
-    <mesh name="imu_sensor_1" content_type="model/stl" file="d:/Programming/RAMI_Project/robot_RAMI_v1_urdf_description/meshes/imu_sensor_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="base_link" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/base_link.stl" scale="0.001 0.001 0.001" />
+    <mesh name="weel_left_front_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/weel_left_front_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="weel_left_back_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/weel_left_back_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="weel_right_front_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/weel_right_front_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="weel_right_back_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/weel_right_back_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="pillar_link_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/pillar_link_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="lift_slide_link_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/lift_slide_link_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="rotation_link_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/rotation_link_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="arm_link_1_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/arm_link_1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="arm_link_2_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/arm_link_2_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="arm_link_3_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/arm_link_3_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="arm_link_4_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/arm_link_4_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="arm_link_5_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/arm_link_5_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="arm_link_6_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/arm_link_6_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="depth_camera_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/depth_camera_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="gripper_camera_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/gripper_camera_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="ultrasonic_sensor_1_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="ultrasonic_sensor_2_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_2_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="ultrasonic_sensor_3_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_3_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="ultrasonic_sensor_4_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_4_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="ultrasonic_sensor_5_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_5_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="ultrasonic_sensor_6_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_6_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="ultrasonic_sensor_7_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_7_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="ultrasonic_sensor_8_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/ultrasonic_sensor_8_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="imu_sensor_1" content_type="model/stl" file="../../robot_RAMI_v1_urdf_description/meshes/imu_sensor_1.stl" scale="0.001 0.001 0.001" />
   </asset>
 
   <worldbody>

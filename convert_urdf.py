@@ -81,6 +81,13 @@ def main():
             
     tree.write(out_mjcf_path, encoding="utf-8", xml_declaration=True)
 
+    # Convert absolute paths to relative paths in the saved MJCF for git portability
+    with open(out_mjcf_path, "r", encoding="utf-8") as f:
+        xml_content = f.read()
+    xml_content = xml_content.replace(abs_mesh_dir, "../../robot_RAMI_v1_urdf_description")
+    with open(out_mjcf_path, "w", encoding="utf-8") as f:
+        f.write(xml_content)
+
     print("Conversion complete! Output saved to:", out_mjcf_path)
 
     # Cleanup temp file
