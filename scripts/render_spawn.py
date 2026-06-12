@@ -7,8 +7,11 @@ import numpy as np
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from src.infrastructure.simulator.rami_mujoco_adapter import RamiMujocoAdapter
 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 def render_spawn():
-    model = mujoco.MjModel.from_xml_path('d:/Programming/RAMI_Project/config/rami_description/rami_indoor_world.xml')
+    model = mujoco.MjModel.from_xml_path(os.path.join(PROJECT_ROOT, "config/rami_description/rami_indoor_world.xml"))
     data = mujoco.MjData(model)
     adapter = RamiMujocoAdapter(model, data)
     
@@ -35,7 +38,7 @@ def render_spawn():
     img = renderer.render()
     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
     
-    output_path = "C:/Users/sunny/.gemini/antigravity-ide/brain/27554dc4-80c9-47a9-a5e3-d6d1f0d2e6f8/safe_spawn_head_camera.png"
+    output_path = os.path.join(PROJECT_ROOT, "safe_spawn_head_camera.png")
     cv2.imwrite(output_path, img)
     print(f"Rendered to {output_path}")
 

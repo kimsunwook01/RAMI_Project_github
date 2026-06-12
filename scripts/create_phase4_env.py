@@ -1,8 +1,11 @@
 import os
 import re
 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 def main():
-    root_dir = "d:/Programming/RAMI_Project"
+    root_dir = PROJECT_ROOT
     rami_world_path = os.path.join(root_dir, "config/rami_description/rami_world.xml")
     phase4_world_path = os.path.join(root_dir, "config/rami_description/rami_phase4_world.xml")
 

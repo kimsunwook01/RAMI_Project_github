@@ -123,6 +123,16 @@ class RamiMujocoAdapter(RobotHardwareIO):
             
         return (x, y, theta)
 
+    def get_base_yaw(self) -> float:
+        """
+        로봇 동체의 현재 yaw 각도를 반환합니다.
+        """
+        root_rot_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_JOINT, "root_z_rot")
+        if root_rot_id != -1:
+            return float(self.data.qpos[self.model.jnt_qposadr[root_rot_id]])
+        return 0.0
+
+
     def get_end_effector_pose(self) -> tuple[list[float], list[float]]:
         """
         로봇암 말단(gripper_camera_1)의 현재 전역 좌표 및 방향 행렬(3x3) 반환

@@ -3,8 +3,11 @@ import re
 import xml.etree.ElementTree as ET
 import mujoco
 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 def main():
-    root_dir = "d:/Programming/RAMI_Project"
+    root_dir = PROJECT_ROOT
     xacro_path = os.path.join(root_dir, "indoor_space_urdf_description/urdf/indoor_space_urdf.xacro")
     temp_urdf_path = os.path.join(root_dir, "temp_indoor.urdf")
     out_dir = os.path.join(root_dir, "config/indoor_description")

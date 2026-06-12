@@ -66,6 +66,16 @@ class RobotHardwareIO(Protocol):
         """
         pass
         
+    def get_base_yaw(self) -> float:
+        """
+        로봇 동체의 현재 yaw 각도를 반환합니다.
+        
+        Returns:
+            float: yaw angle in radians
+        """
+        pass
+
+        
     def get_end_effector_pose(self) -> tuple[List[float], List[float]]:
         """
         로봇암 말단(End-effector, 예: gripper_camera_1)의 현재 전역(또는 베이스 기준) 좌표 및 방향을 반환합니다.

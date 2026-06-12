@@ -2,8 +2,11 @@ import mujoco
 import time
 import math
 
+import os
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 def main():
-    xml_path = "D:\\Programming\\RAMI_Project\\config\\rami_description\\rami_phase4_world.xml"
+    xml_path = os.path.join(PROJECT_ROOT, "config", "rami_description", "rami_phase4_world.xml")
     print(f"Loading model from {xml_path}")
     model = mujoco.MjModel.from_xml_path(xml_path)
     data = mujoco.MjData(model)

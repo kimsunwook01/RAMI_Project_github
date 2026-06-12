@@ -1,5 +1,9 @@
+import os
 import struct
 import sys
+
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 def get_stl_bounds(filepath):
     min_vals = [float('inf'), float('inf'), float('inf')]
@@ -23,7 +27,7 @@ def get_stl_bounds(filepath):
             
     return min_vals, max_vals
 
-filepath = r"d:\Programming\RAMI_Project\indoor_space_urdf_description\meshes\toggle_switch_H20_corridor-lamp_3_1.stl"
+filepath = ros.path.join(PROJECT_ROOT, "indoor_space_urdf_description/meshes/toggle_switch_H20_corridor-lamp_3_1.stl")
 min_v, max_v = get_stl_bounds(filepath)
 print(f"STL Bounding Box:")
 print(f"Min: {min_v}")

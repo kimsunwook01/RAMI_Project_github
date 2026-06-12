@@ -4,8 +4,11 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import mujoco
 from src.infrastructure.simulator.rami_mujoco_adapter import RamiMujocoAdapter
 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 def test_arm():
-    model = mujoco.MjModel.from_xml_path('d:/Programming/RAMI_Project/config/rami_description/rami_world.xml')
+    model = mujoco.MjModel.from_xml_path(os.path.join(PROJECT_ROOT, "config/rami_description/rami_world.xml"))
     data = mujoco.MjData(model)
     adapter = RamiMujocoAdapter(model, data)
     

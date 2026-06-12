@@ -5,8 +5,9 @@ from ultralytics import YOLO
 from ultralytics import YOLO
 
 class VisionProcessor:
-    def __init__(self, model: mujoco.MjModel):
+    def __init__(self, model: mujoco.MjModel, data: mujoco.MjData):
         self.model = model
+        self.data = data
         
         # YOLOv8 모델 초기화 (가장 빠르고 가벼운 Nano 모델 사용)
         self.yolo_model = YOLO('yolov8n.pt')
@@ -19,13 +20,13 @@ class VisionProcessor:
         self.height = 480
         self.renderer = mujoco.Renderer(self.model, self.height, self.width)
         
-    def process_camera(self, data: mujoco.MjData, camera_name: str, detect_yolo: bool = True, detect_qr: bool = True):
+    def process_camera(self, camera_name: str, detect_yolo: bool = True, detect_qr: bool = True):
         """
         주어진 카메라에서 RGB 프레임을 렌더링하고 객체(YOLO) 및 QR 코드를 탐지합니다.
         """
         try:
             # 렌더러의 시점을 해당 카메라로 업데이트
-            self.renderer.update_scene(data, camera=camera_name)
+            self.renderer.update_scene(self.data, camera=camera_name)
             
             # RGB 이미지 추출 (H, W, 3) 
             rgb_image = self.renderer.render()

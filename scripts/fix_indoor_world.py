@@ -1,7 +1,11 @@
+import os
 import xml.etree.ElementTree as ET
 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 def main():
-    path = "d:/Programming/RAMI_Project/config/indoor_description/indoor_world.xml"
+    path = os.path.join(PROJECT_ROOT, "config/indoor_description/indoor_world.xml")
     tree = ET.parse(path)
     root = tree.getroot()
 

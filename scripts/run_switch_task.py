@@ -11,9 +11,12 @@ from src.application.services.manipulator_service import ManipulatorService
 from src.infrastructure.sensors.vision_processor import VisionProcessor
 from src.domain.robot.switch_task_controller import SwitchTaskController
 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 def main():
     print("Loading simulation environment...")
-    model = mujoco.MjModel.from_xml_path('d:/Programming/RAMI_Project/config/rami_description/rami_indoor_world.xml')
+    model = mujoco.MjModel.from_xml_path(os.path.join(PROJECT_ROOT, "config/rami_description/rami_indoor_world.xml"))
     data = mujoco.MjData(model)
     
     # Spawn the robot at a good location near a switch.
@@ -31,7 +34,7 @@ def main():
 
     hardware = RamiMujocoAdapter(model, data)
     manipulator = ManipulatorService(hardware, dt=model.opt.timestep)
-    vision = VisionProcessor(model)
+    vision = VisionProcessor(model, data)
     
     controller = SwitchTaskController(hardware, manipulator, vision)
     
@@ -48,7 +51,7 @@ def main():
         with mujoco.viewer.launch_passive(model, data) as viewer:
             while viewer.is_running():
                 # 1. 제어기 스텝 실행 (비전 처리, 스테이트 머신, 속도 명령 계산)
-                bgr_img, qr_det = controller.step(data, model)
+                bgr_img, qr_det = controller.step()
                 
                 # 2. 물리 엔진 스텝 진행 (여러 번 쪼개서 시뮬레이션 안정성 확보)
                 for _ in range(10):

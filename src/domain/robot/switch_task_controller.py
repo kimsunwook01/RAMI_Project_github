@@ -1,6 +1,5 @@
 import math
 import numpy as np
-import mujoco
 from src.domain.controllers.kinematics import KinematicsSolver
 
 class SwitchTaskController:
@@ -23,9 +22,9 @@ class SwitchTaskController:
         self.target_bbox_area = 15000  # 접근 완료로 판단할 QR 코드 넓이 (가까워질수록 커짐)
         self.wait_steps = 0
         
-    def step(self, data, model):
+    def step(self):
         # 1. 비전 센서 업데이트
-        detections, bgr_img = self.vision.process_camera(data, "head_camera", detect_yolo=False, detect_qr=True)
+        detections, bgr_img = self.vision.process_camera("head_camera", detect_yolo=False, detect_qr=True)
         
         qr_det = None
         if detections:
@@ -33,8 +32,7 @@ class SwitchTaskController:
             qr_det = detections[0]
             
         # 2. 로봇의 현재 회전각 (theta) 
-        root_rot_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, "root_z_rot")
-        theta = data.qpos[model.jnt_qposadr[root_rot_id]] if root_rot_id != -1 else 0.0
+        theta = self.hw.get_base_yaw()
         
         vx, vy, wz = 0.0, 0.0, 0.0
         
@@ -89,10 +87,7 @@ class SwitchTaskController:
                 # 글로벌 좌표계 변환
                 offset_x, offset_y, offset_z = -0.7, 0.0, 1.4 # 로컬 -0.7m 전방, 1.4m 높이
                 
-                root_x_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, "root_x")
-                root_y_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, "root_y")
-                rx = data.qpos[model.jnt_qposadr[root_x_id]]
-                ry = data.qpos[model.jnt_qposadr[root_y_id]]
+                rx, ry, _ = self.hw.read_base_pose()
                 
                 target_x = rx + (offset_x * math.cos(theta) - offset_y * math.sin(theta))
                 target_y = ry + (offset_x * math.sin(theta) + offset_y * math.cos(theta))

@@ -1,8 +1,12 @@
+import os
 import mujoco
 import numpy as np
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+
 def main():
-    model = mujoco.MjModel.from_xml_path("d:/Programming/RAMI_Project/config/rami_description/rami_phase4_world.xml")
+    model = mujoco.MjModel.from_xml_path(os.path.join(PROJECT_ROOT, "config/rami_description/rami_phase4_world.xml"))
     data = mujoco.MjData(model)
     mujoco.mj_forward(model, data)
     
