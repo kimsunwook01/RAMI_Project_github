@@ -63,6 +63,12 @@ conda env create -f environment.yml
 conda activate RAMI_Project
 ```
 
+### YOLOv8 모델 다운로드 (최초 1회)
+```bash
+pip install ultralytics
+python -c "from ultralytics import YOLO; YOLO('yolov8n.pt')"
+```
+
 ---
 
 ## 📚 관련 문서 모음

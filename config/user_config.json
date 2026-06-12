@@ -1,0 +1,58 @@
+{
+    "switches": [
+        {
+            "switch_id": "toggle_switch_H40_living-room-lamp_1_1",
+            "target_room": "living-room",
+            "qr_code_id": "qr_switch_case_1",
+            "switch_case_id": "switch_case_1"
+        },
+        {
+            "switch_id": "toggle_switch_H40_living-room-lamp_2_1",
+            "target_room": "living-room",
+            "qr_code_id": "qr_switch_case_1",
+            "switch_case_id": "switch_case_1"
+        },
+        {
+            "switch_id": "toggle_switch_H20_corridor-lamp_2_1",
+            "target_room": "corridor",
+            "qr_code_id": "qr_switch_case_2",
+            "switch_case_id": "switch_case_2"
+        },
+        {
+            "switch_id": "toggle_switch_H20_corridor-lamp_3_1",
+            "target_room": "corridor",
+            "qr_code_id": "qr_switch_case_2",
+            "switch_case_id": "switch_case_2"
+        },
+        {
+            "switch_id": "toggle_switch_H20_corridor-lamp_4_1",
+            "target_room": "corridor",
+            "qr_code_id": "qr_switch_case_2",
+            "switch_case_id": "switch_case_2"
+        },
+        {
+            "switch_id": "toggle_switch_H20_corridor-lamp_1_1",
+            "target_room": "corridor",
+            "qr_code_id": "qr_switch_case_2",
+            "switch_case_id": "switch_case_2"
+        },
+        {
+            "switch_id": "toggle_switch_H80_kitchen-lamp_1_1",
+            "target_room": "kitchen",
+            "qr_code_id": "qr_switch_case_3",
+            "switch_case_id": "switch_case_3"
+        },
+        {
+            "switch_id": "toggle_switch_H80_room-ramp_1_1",
+            "target_room": "room",
+            "qr_code_id": "qr_switch_case_4",
+            "switch_case_id": "switch_case_4"
+        },
+        {
+            "switch_id": "key_switch_room-ramp_2_1",
+            "target_room": "room",
+            "qr_code_id": "qr_switch_case_5",
+            "switch_case_id": "switch_case_5"
+        }
+    ]
+}
